@@ -11,7 +11,7 @@ descrption = "weschool App"
 
 代码测试:
 	服务器: node server.js (启动服务器之前请先启动mongo)
-	客户端：index.html	
+	客户端：./客户端/weschool/index.html	
 	
 代码阅读导航:
 	./服务器/开发文档.js
