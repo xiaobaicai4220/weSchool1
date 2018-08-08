@@ -1,0 +1,43 @@
+var mongoose = require('mongoose'),
+	Schema = mongoose.Schema;
+var UserInfoSchema = new Schema({
+	phone:{
+		type:String,
+		unique:true,
+		index:1
+	},
+	backgroundImgUrl:{
+		type:String,
+	},
+	userHeaderImgUrl:{
+		type:String,
+	},
+	userSignature:{
+		type:String,
+	},
+	name:{
+		type:String,
+	},
+	sex:{
+		type:String,
+	},
+	birth:{
+		type:String,
+	},
+	school:{
+		type:String,
+	},
+	institute:{
+		type:String,
+	},
+	major:{
+		type:String,
+	},
+	grade:{
+		type:String,
+	},
+	hometown:{
+		type:String,
+	},
+});
+mongoose.model('UserInfo',UserInfoSchema)

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="css/mui.min.css">
+		<link rel="stylesheet" href="css/icon.css">
+		<link rel="stylesheet" href="css/ws.css">
+		<link rel="stylesheet" href="css/wsPopPicker.css">
+		<style>
+			.mui-mine-head-pic {
+				width: 15vw;
+				height: 15vw;
+				border-radius: 10vw;
+				margin: 4vw;
+			}
+			
+			.mui-mine-userName {
+				font-size: 6vw;
+				color: #000000;
+				margin: 2px;
+			}
+			
+			.mui-mine-body {
+				position: absolute;
+				left: 25vw;
+				top: 6.5vw;
+			}
+			
+			.mui-mine-ageAndElle {
+				margin: 2px;
+				font-size: 3.1vw;
+			}
+			
+			.mui-mine-age {
+				display: inline-block;
+				background-color: #007AFF;
+				color: #FFFFFF;
+				border-radius: 3vw;
+				padding-left: 1vw;
+				padding-right: 1vw;
+			}
+			
+			.mui-mine-elle {
+				display: inline-block;
+				background-color: #F0AD4E;
+				color: #FFFFFF;
+				border-radius: 3vw;
+				padding-left: 1vw;
+				padding-right: 1vw;
+			}
+			
+			.mui-mine-signatrue {
+				font-size: 3.1vw;
+				color: #777777;
+			}
+			
+			.mui-mine-desc {
+				width: 73vw;
+				display: inline-block;
+			}
+			
+			.mui-mine-text {
+				display: inline-block;
+				margin: 2px;
+				position: absolute;
+				top: 15px;
+				margin-left: 15px;
+			}
+			
+			.mine-header-title {
+				font-size: 25px;
+				color: #797979;
+				position: absolute;
+				top: 13px;
+				left: 50vw;
+				margin-left:-60px;
+			}
+			
+			.mui-mine-box1 {
+				margin-top: 60px;
+				margin-bottom: 10px;
+			}
+			.mui-mine-box2 {
+				margin-top: 10px;
+				margin-bottom: 10px;
+			}
+			.mui-mine-box3 {
+				margin-top: 10px;
+				margin-bottom: 10px;
+			}
+			.mui-mine-QR {
+				position: absolute;
+				top: 5vw;
+				right: 5vw;
+			}
+			.mui-bar-header-secondary {
+				box-shadow: 0 0 1px rgba(0, 0, 0, .5);
+				height: 51px;
+				padding: 5px;
+				background-color: rgba(0, 200, 247, 255);
+				width: 100%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="mui-bar mui-bar-header-secondary" >
+			<span class="mine-header-title">weschool</span>
+		</div>
+		<div class="mui-mine-box1">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell" data-href="none">
+					<div class="mui-mine-head">
+						<img class=" mui-pull-left mui-mine-head-pic" src="./image/head1.jpg" onerror="this.src='imgs/lazyload.png'">
+					</div>
+					<div class="mui-mine-body">
+						<p class="mui-mine-userName">小白菜</p>
+						<div class="mui-mine-desc">
+							<p class="mui-mine-ageAndElle">
+								<span class="mui-mine-age">♂21</span>
+								<span class="mui-mine-elle">江南大学</span>
+							</p>
+							<p class="mui-ellipsis mui-mine-signatrue">我期待的，黑暗中的光,</p>
+							<span class="mui-icon mui-icon-extra mui-icon-extra-QR mui-mine-QR"></span>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="mui-mine-box2">
+			<ul class="mui-table-view ws-user-main">
+				<li class="mui-table-view-cell" data-href="dyna">
+					<span class="mui-icon mui-icon-extra mui-icon-extra-dyna"></span>
+					<span class="mui-mine-text">我发布的</span>
+				</li>
+				<li class="mui-table-view-cell" data-href="collection">
+					<span class="mui-icon mui-icon-extra mui-icon-extra-collection1"></span>
+					<span class="mui-mine-text">我的收藏</span>
+				</li>
+				<li class="mui-table-view-cell" data-href="wallet">
+					<span class="mui-icon mui-icon-extra mui-icon-extra-wallet"></span>
+					<span class="mui-mine-text">我的钱包</span>
+				</li>
+				<li class="mui-table-view-cell" data-href="orderfrom">
+					<span class="mui-icon mui-icon-extra mui-icon-extra-orderform"></span>
+					<span class="mui-mine-text">我的订单</span>
+				</li>
+				<li class="mui-table-view-cell" data-href="school">
+					<span class="mui-icon mui-icon-extra mui-icon-extra-school"></span>
+					<span class="mui-mine-text">我的校园</span>
+				</li>
+			</ul>
+		</div>
+		<div class="mui-mine-box3">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell" data-href="setup">
+					<span class="mui-icon mui-icon-extra mui-icon-extra-setup"></span>
+					<span class="mui-mine-text">设置</span>
+				</li>
+			</ul>
+		</div>
+
+	</body>
+	<script src="js/mui.min.js"></script>
+	<script src="js/ws.js"></script>
+	<script>
+		mui.init();
+		document.addEventListener('plusready', function() {
+			var pageUserInfo = mui.preload({
+					url: 'userinfo.html',
+					id: 'userinfo.html',
+					styles: {
+						bottom:'0px',
+						top:'0px'
+					}
+				});
+			
+			//获取页面元素节点
+			var userpages = {
+				userHeaderImg: document.getElementsByClassName("mui-mine-head-pic")[0],
+				userName: document.getElementsByClassName("mui-mine-userName")[0],
+				sexAndAge: document.getElementsByClassName("mui-mine-age")[0],
+				school: document.getElementsByClassName("mui-mine-elle")[0],
+				userSignature: document.getElementsByClassName("mui-mine-signatrue")[0],
+			}
+			let userInfo = ws.data.userInfo.getUserInfo();
+
+			function init() {
+				userpages.userHeaderImg.setAttribute("src", userInfo.userHeaderImgUrl || " ");
+				userpages.userName.innerHTML = userInfo.name || " ";
+				userpages.sexAndAge.innerHTML = userInfo.sex || " ";
+				userpages.school.innerHTML = userInfo.school || " ";
+				userpages.userSignature.innerHTML = userInfo.userSignature || " ";
+			}
+			init();
+
+			mui('.mui-table-view').on('tap', 'li', function(e) {
+				var target = this.getAttribute("data-href");
+				if(target == "none") {
+					showUserInfo();
+					return;
+				}
+				if(target == "dyna") {
+					plus.nativeUI.toast("你点击了我发布的");
+					return;
+				}
+				if(target == "collection") {
+					plus.nativeUI.toast("你点击了我的收藏");
+					return;
+				}
+				if(target == "wallet") {
+					plus.nativeUI.toast("你点击了我的钱包");
+					return;
+				}
+				if(target == "orderfrom") {
+					plus.nativeUI.toast("你点击了我的订单");
+					return;
+				}
+				if(target == "school") {
+					plus.nativeUI.toast("你点击了我的校园");
+					return;
+				}
+				if(target == "setup") {
+					plus.nativeUI.toast("你点击了设置");
+					return;
+				}
+			})
+			
+			
+			
+			function showUserInfo(){
+				setTimeout(function() {
+					pageUserInfo.show("slide-in-right", 300);
+				}, 150);
+			}
+		});
+	</script>
+
+</html>

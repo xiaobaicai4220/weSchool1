@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>入口页面</title>
+	</head>
+	<body>
+		<script type="text/javascript" src="js/mui.min.js" ></script>
+		<script type="text/javascript" src="js/ws.js"></script>
+		<script>
+			
+			mui.init({
+				preloadPages:[{
+					url:"login.html",
+					id:"login.html"
+				}]
+			});
+			document.addEventListener("plusready",function(){
+				//读取向导页阅读状态
+				ws.token.removeUserToken();
+				//ws.token.setUserToken("a");
+				
+				var launchFlag=plus.storage.getItem("launchFlag");
+				//var launchFlag = false;
+				if(launchFlag){
+					if(ws.token.getUserToken()){
+						//打开首页
+						mui.openWindow({
+							url:"main.html",
+							id:"main.html"
+						});
+					}else{
+						mui.openWindow({
+							url:"login.html",
+							id:"login.html"
+						});
+					}
+					//var self = plus.webview.currentWebview();
+					//self.close();
+				}
+				else{
+				   //打开向导页
+				   mui.openWindow({
+				   	  url:"guide.html",
+				   	  id:"guide.html"
+				   })
+				}
+				
+			});
+		</script>
+	</body>
+</html>

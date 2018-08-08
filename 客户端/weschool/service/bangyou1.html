@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<style>
+			.mui-card .mui-control-content {
+				padding: 10px;
+			}
+			
+			.mui-control-content {
+				height: 150px;
+			}
+			
+			.mui-segmented-control.mui-segmented-control-inverted .mui-control-item {
+				color: #646464;
+			}
+			
+			.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
+				color: #f63;
+				border-bottom: 0;
+			}
+			
+			.mui-bar-header-secondary {
+				background-color: #fff;
+				box-shadow: 0 0 1px rgba(0, 0, 0, .5);
+				height: 44px;
+				padding: 5px;
+			}
+			
+			.mui-table-view-cell {
+				font-size: 15px;
+			}
+			
+			#item1 {
+				height: 170px;
+			}
+			
+			.mui-backdrop {
+				top: 44px;
+			}
+			
+			.mui-control-content {
+				border-top: 1px solid #c8c7cc;
+			}
+			
+			.cellselected {
+				background-color: #efeff4;
+				color: #f63;
+			}
+			
+			.dp_filter_content {
+				position: fixed;
+				top: 43px;
+				left: 0;
+				width: 100%;
+				z-index: 1500;
+			}
+			
+			p.mui-ellipsis {
+				/*white-space: normal;*/
+			}
+			
+			.mui-img {
+				border-radius: 10vw;
+			}
+			
+			.putTime {
+				color: #666666;
+				font-size: 3vw;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--下拉刷新容器-->
+		<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<!--数据列表-->
+				<ul class="mui-table-view mui-table-view-chevron">
+				</ul>
+			</div>
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/ws.js"></script>
+		<script>
+			var webview_detail = null;
+			mui.init({
+				pullRefresh: {
+					container: '#pullrefresh',
+					down: {
+						callback: pulldownRefresh
+					},
+					up: {
+						contentrefresh: '正在加载...',
+						callback: pullupRefresh
+					}
+				}
+			});
+			mui.plusReady(function() {
+				getList();
+				
+				/** 预加载页  **/
+				webview_detail = mui.preload({
+					url: 'bangyouDetail.html',
+					id: 'news_detail',
+					styles: {
+						top:'0px',
+						bottom:'0px'
+					}
+				});
+			})
+
+
+			function open_detail(id){
+				//触发子窗口变更详情
+				mui.fire(webview_detail, 'get_detail', {
+					'id':id
+				});
+				
+				setTimeout(function() {
+					webview_detail.show("slide-in-right", 300);
+				}, 150);
+			}
+
+			//初始时将time标签设为当前值
+			var time = (new Date()).getTime().toString();
+			var purFlag = false; //上拉刷新标记
+
+			/**
+			 * 下拉刷新具体业务实现
+			 */
+			function pulldownRefresh() {
+				setTimeout(function() {
+					getListD()
+					plus.nativeUI.toast('刷新成功', {
+						verticalAlign: 'top'
+					});
+					mui('#pullrefresh').pullRefresh().endPulldownToRefresh(); //refresh completed
+				}, 1500);
+			}
+			var count = 0;
+			/**
+			 * 上拉加载具体业务实现
+			 */
+			function pullupRefresh() {
+				setTimeout(function() {
+					mui('#pullrefresh').pullRefresh().endPullupToRefresh(purFlag); //参数为true代表没有更多数据了。
+					getList()
+				}, 1500);
+			}
+
+			/*事件监听*/
+			mui('.mui-table-view').on('tap','li',function(e){
+				var target = this.getAttribute('data-id');
+				plus.nativeUI.toast('点击了'+target);
+				open_detail(target);
+				return;
+			})
+			
+			/**
+			 *从列表项到详情项 
+			 */
+			
+			
+			
+			/**
+			 * li模板
+			 */
+			var tmpl = '<img class="mui-media-object mui-pull-left mui-img" src="{{userheadImgurl}}" onerror="this.src=\'../image/head13.jpg\'"><div class="mui-media-body"><span class="mui-pull-right putTime">{{putTime}}</span>{{userName}}<p class="mui-ellipsis">{{location}}➡{{address}}</p><span class="deal_price">积分:</span><span class="deal_deco">{{jifen}}</span><span class="deal_oldprice">&nbsp;送达时间:{{time}}</span></div>'
+
+			/*
+			 * 模板处理
+			 
+			var data = {
+				'_id': '5b68f16277643304e4190679',
+				'putUserPhone': '18861855081',
+				'putUserName': '小白菜',
+				'putUserheaderImgUrl': 'image/head13.jpg',
+				'putTime': '1533604194189',
+				'code': '12345',
+				'location': '小东门',
+				'time': '12201340',
+				'jifen': '20',
+				'isOfficial': 'false',
+				'remarks': '',
+				'address': '北区,学院楼,人文学院',
+				'addressId': '5b64166feac1e92aa03384a2',
+				'__v': 0
+			}*/
+
+			//获取数据，并添加到table中
+			function getList() {
+				mui.ajax("http://192.168.43.227/bangyou/getList", {
+					type: "POST",
+					headers: {
+						'Content-Type': 'application/json;charset=utf-8'
+					},
+					data: JSON.stringify({
+						'token': ws.token.getUserToken(),
+						'time': time
+					}),
+					success: function(data) {
+						if(data.type == 0) {
+							//主界面刷新.
+							//页面逻辑
+							var length = data.list.length;
+							var i = 0;
+							var table = document.body.querySelector('.mui-table-view');
+							do {
+								//存储值键对
+								ws.key.setValue(data.list[i]._id, data.list[i]);
+								var li = createLi(data.list[i]);
+								table.appendChild(li);
+								i++;
+							} while (i < length);
+							//获取成功后，将time标签设置为最早的time数据的值
+							time = data.list[0].putTime;
+							return;
+						}
+						if(data.type == 1) {
+							plus.nativeUI.toast('没有更多数据');
+							purFlag = true;
+							return;
+						}
+						console.log("创建失败");
+						return;
+					},
+					err: function(xhr, type, errorThrown) {
+						异常处理
+						alert(type);
+					}
+				})
+			}
+
+			//pulldown 获取数据，并添加到table中
+			function getListD() {
+				mui.ajax("http://192.168.43.227/bangyou/getList", {
+					type: "POST",
+					headers: {
+						'Content-Type': 'application/json;charset=utf-8'
+					},
+					data: JSON.stringify({
+						'token': '2LmFcUrFV2NnipDGWo554RlMory3j/krn1zoDxMMp2U=.HxhU8LZov6wsgq/mS1mHlClcc1306IVQ+rRGWENeJlc=',
+						'time': (new Date()).getTime().toString()
+					}),
+					success: function(data) {
+						if(data.type == 0) {
+							//主界面刷新.
+							var length = data.list.length;
+							var i = 0;
+							var table = document.body.querySelector('.mui-table-view');
+							table.innerHTML = " ";
+							//刷新页面数据
+							do {
+								ws.key.setValue(data.list[i]._id, data.list[i]);
+								var li = createLi(data.list[i]);
+								table.insertBefore(li, table.firstChild);
+								//console.log(data.list[i]._id);
+								//存储值键对
+								i++;
+							} while (i < length);
+							//获取成功后，将time标签设置为最早的time数据的值
+							time = data.list[0].putTime;
+							return;
+						}
+						if(data.type == 1) {
+							plus.nativeUI.toast('没有更多数据');
+							//purFlag = true;
+							return;
+						}
+						console.log("创建失败");
+						return;
+					},
+					err: function(xhr, type, errorThrown) {
+						异常处理
+						alert(type);
+					}
+				})
+			}
+
+			function createLi(data) {
+				/*
+				 * 数据预处理
+				 * 将原始数据处理成模板需要的数据
+				 */
+				if(data.time != '今天') {
+					data.time = data.time.slice(0, 2) + ":" + data.time.slice(2, 4) + "~" + data.time.slice(4, 6) + ":" + data.time.slice(6, 8)
+				}
+				data.address = data.address.replace(/\,/g, '');
+				var a = data.putTime
+				var date = new Date(parseInt(a))
+				var now = new Date();
+				var strA = '';
+				if(now.getMonth() == date.getMonth() && now.getDay() == date.getDay()) {
+					strA += '今天';
+				} else if(now.getMonth() == date.getMonth() && now.getDay() - 1 == date.getDay()) {
+					strA += '昨天';
+				} else if(now.getMonth() == date.getMonth() && now.getDay() - 2 == date.getDay()) {
+					strA += '前天';
+				} else {
+					strA += (date.getMonth() + 1) + "月" + date.getDay() + "日";
+				}
+				strA += date.getHours() + ":" + date.getMinutes();
+
+				var li = document.createElement('li');
+				li.classList.add('mui-table-view-cell');
+				li.classList.add('mui-media');
+				li.setAttribute('data-id', data._id);
+				var str = tmpl.replace('{{userheadImgurl}}', data.putUserheaderImgUrl);
+				str = str.replace('{{location}}', data.location);
+				str = str.replace('{{address}}', data.address);
+				str = str.replace('{{jifen}}', data.jifen);
+				str = str.replace('{{time}}', data.time);
+				str = str.replace('{{userName}}', data.putUserName);
+				str = str.replace('{{putTime}}', strA);
+				li.innerHTML = str;
+				return li;
+			}
+		</script>
+	</body>
+
+</html>

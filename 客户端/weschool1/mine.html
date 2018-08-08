@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="css/mui.min.css">
+		<link rel="stylesheet" href="css/icon.css">
+		<link rel="stylesheet" href="css/weschool.css">
+		<style>
+			.mui-mine-head-pic{
+				width:15vw;
+				height:15vw;
+				border-radius: 10vw;
+				margin:4vw;
+			}
+			.mui-mine-userName{
+				font-size: 6vw;
+				color: #000000;
+				margin: 2px;
+			}
+			.mui-mine-body{
+				position: absolute;
+				left:25vw;
+				top:6.5vw;
+			}
+			.mui-mine-ageAndElle{
+				margin: 2px;
+				font-size: 3.1vw;
+			}
+			.mui-mine-age{
+				display: inline-block;
+				background-color:#007AFF;
+				color:#FFFFFF;
+				border-radius:3vw;
+				padding-left: 1vw;
+				padding-right:1vw ;
+			}
+			.mui-mine-elle{
+				display: inline-block;
+				background-color:#F0AD4E;
+				color:#FFFFFF;
+				border-radius: 3vw;
+				padding-left: 1vw;
+				padding-right: 1vw ;
+			}
+			.mui-mine-signatrue{
+				font-size: 3.1vw;
+				color:#777777;
+			}
+			.mui-mine-desc{
+				width: 73vw;
+				display: inline-block;
+			}
+			.mui-mine-text{
+				display: inline-block;
+				margin: 2px;
+				position: absolute;
+				top:15px;
+				margin-left:15px ;
+			}
+			.mine-header-title{
+				font-size: 25px;
+				color: #797979;
+				position: absolute;
+				top:12px;
+				left:35vw;			
+			}
+			.mui-mine-box{
+				margin-top: 10px;
+				margin-bottom: 10px;
+			}
+			.mui-mine-QR{
+				position: absolute;
+				top:5vw;
+				right: 5vw;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="mui-bar-header-secondary">
+			<span class="mine-header-title">weschool</span>
+		</div>
+		<div class="mui-mine-box">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell">
+					<div class="mui-mine-head">
+						<img class=" mui-pull-left mui-mine-head-pic" src="./image/head1.jpg" onerror="this.src='imgs/lazyload.png'">
+					</div>
+					<div class="mui-mine-body">
+						<p class="mui-mine-userName">小白菜</p>
+						<div class="mui-mine-desc">
+							<p class="mui-mine-ageAndElle">
+								<span class="mui-mine-age">♂21</span>
+								<span class="mui-mine-elle">江南大学</span>
+							</p>
+							<p class="mui-ellipsis mui-mine-signatrue">我期待的，黑暗中的光,</p>
+							<span class="mui-icon mui-icon-extra mui-icon-extra-QR mui-mine-QR"></span>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="mui-mine-box">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell">
+					<span class="mui-icon mui-icon-extra mui-icon-extra-dyna"></span>
+					<span class="mui-mine-text">我发布的</span>
+				</li>
+				<li class="mui-table-view-cell">
+					<span class="mui-icon mui-icon-extra mui-icon-extra-collection1"></span>
+					<span class="mui-mine-text">我的收藏</span>
+				</li>
+				<li class="mui-table-view-cell">
+					<span class="mui-icon mui-icon-extra mui-icon-extra-wallet"></span>
+					<span class="mui-mine-text">我的钱包</span>
+				</li>
+				<li class="mui-table-view-cell">
+					<span class="mui-icon mui-icon-extra mui-icon-extra-orderform"></span>
+					<span class="mui-mine-text">我的订单</span>
+				</li>
+				<li class="mui-table-view-cell">
+					<span class="mui-icon mui-icon-extra mui-icon-extra-school"></span>
+					<span class="mui-mine-text">我的校园</span>
+				</li>
+			</ul>
+		</div>
+		<div class="mui-mine-box">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell">
+					<span class="mui-icon mui-icon-extra mui-icon-extra-setup"></span>
+					<span class="mui-mine-text">设置</span>
+				</li>
+			</ul>
+		</div>
+	</body>
+	<script src="js/mui.min.js"></script>
+	<script>
+		mui.init();
+		document.addEventListener('plusready',function(){
+		});
+	</script>
+</html>

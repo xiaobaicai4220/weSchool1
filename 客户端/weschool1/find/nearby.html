@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html class="ui-page-login">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link href="../css/icon.css" rel="stylesheet" />
+		<style>	
+			.mui-table-view-cell {
+				font-size: 15px;
+			}
+
+			p.mui-ellipsis {
+				/*white-space: normal;*/
+			}
+			
+			.mui-nearby-head-pic{
+				width:15vw;
+				height:15vw;
+				border-radius: 10vw;
+				margin:0.3vw;
+			}
+			.mui-nearby-userName{
+				font-size:5vw;
+				color: #000000;
+				margin: 1px;
+			}
+			.mui-nearby-body{
+				position: absolute;
+				left:22vw;
+				top:2vw;
+			}
+			.mui-nearby-ageAndElle{
+				margin: 2px;
+				font-size: 3.1vw;
+			}
+			.mui-nearby-age-male{
+				display: inline-block;
+				background-color:#007AFF;
+				color:#FFFFFF;
+				border-radius:3vw;
+				padding-left: 1vw;
+				padding-right:1vw;
+				margin-right: 1vw;
+				opacity: 0.6;
+			}
+			.mui-nearby-age-female{
+				display: inline-block;
+				background-color:#fc9ef7;
+				color:#FFFFFF;
+				border-radius:3vw;
+				padding-left: 1vw;
+				padding-right:1vw;
+				margin-right: 1vw;
+				opacity:0.8;
+			}
+			.mui-nearby-elle{
+				display: inline-block;
+				background-color:#F0AD4E;
+				color:#FFFFFF;
+				border-radius: 3vw;
+				padding-left: 1vw;
+				padding-right: 1vw ;
+				opacity:0.7;
+			}
+			.mui-nearby-signatrue{
+				font-size: 3.1vw;
+				color:#777777;
+			}
+			.mui-nearby-desc{
+				width: 73vw;
+				display: inline-block;
+			}
+			.mui-nearby-header{
+				height: 3vh;
+			}
+			.mui-nearby-header-text{
+				display: block;
+				margin-left: 2vh;
+				margin-top:0.6vh;
+				font-size: 2.1vh;
+			}
+			.mui-nearby-header-icon{
+				display: block;
+				margin-right:2vh ;
+				margin-top:0.6vh;
+			}
+			.mui-nearby-distant{
+				font-size: 3.2vw;
+				opacity: 0.5;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+			<p class="mui-nearby-header">
+				<span class="mui-nearby-header-text mui-pull-left">附近的人</span> 
+				<span class="mui-nearby-header-icon mui-pull-right mui-icon mui-icon-extra mui-icon-extra-select"></span>
+			</p>
+			<!-- 以下是滑动层 -->
+			<div id="scroll" class="mui-scroll">	
+		<ul class="mui-table-view" id="bangyoulist">
+			<li class="mui-table-view-cell mui-media" data-id="{{deal_id}}">
+					<div class="mui-nearby-head">
+						<img class=" mui-pull-left mui-nearby-head-pic" src="../image/head1.jpg" onerror="this.src='imgs/lazyload.png'">
+					</div>
+					<div class="mui-nearby-body">
+						<p class="mui-nearby-userName">
+							小白菜
+							<span class="mui-pull-right mui-nearby-distant">
+								2.25km
+							</span>
+						</p>
+						<div class="mui-nearby-desc">
+							<p class="mui-nearby-ageAndElle">
+								<span class="mui-nearby-age-male">♂&nbsp;&nbsp;21</span>
+								<span class="mui-nearby-elle">江南大学</span>
+							</p>
+							<p class="mui-ellipsis mui-nearby-signatrue">我期待的，黑暗中的光,</p>
+						</div>
+					</div>
+			</li>
+			<li class="mui-table-view-cell mui-media" data-id="{{deal_id}}">
+					<div class="mui-nearby-head">
+						<img class=" mui-pull-left mui-nearby-head-pic" src="../image/head2.jpg" onerror="this.src='imgs/lazyload.png'">
+					</div>
+					<div class="mui-nearby-body">
+						<p class="mui-nearby-userName">
+							小灰灰
+							<span class="mui-pull-right mui-nearby-distant">
+								1.25km
+							</span>
+						</p>
+						<div class="mui-nearby-desc">
+							<p class="mui-nearby-ageAndElle">
+								<span class="mui-nearby-age-female">♀&nbsp;&nbsp;18</span>
+							</p>
+							<p class="mui-ellipsis mui-nearby-signatrue">不想撞南墙了，我想撞你心墙</p>
+						</div>
+					</div>
+			</li>
+			<li class="mui-table-view-cell mui-media" data-id="{{deal_id}}">
+					<div class="mui-nearby-head">
+						<img class=" mui-pull-left mui-nearby-head-pic" src="../image/head3.jpg" onerror="this.src='imgs/lazyload.png'">
+					</div>
+					<div class="mui-nearby-body">
+						<p class="mui-nearby-userName">
+							小辣椒
+							<span class="mui-pull-right mui-nearby-distant">
+								3.40km
+							</span>
+						</p>
+						<div class="mui-nearby-desc">
+							<p class="mui-nearby-ageAndElle">
+								<span class="mui-nearby-age-male">♀&nbsp;&nbsp;20</span>
+							</p>
+							<p class="mui-ellipsis mui-nearby-signatrue">叫爸爸，晚上带你出去玩</p>
+						</div>
+					</div>
+			</li>
+			<li class="mui-table-view-cell mui-media" data-id="{{deal_id}}">
+					<div class="mui-nearby-head">
+						<img class=" mui-pull-left mui-nearby-head-pic" src="../image/head4.jpg" onerror="this.src='imgs/lazyload.png'">
+					</div>
+					<div class="mui-nearby-body">
+						<p class="mui-nearby-userName">
+							小布丁
+							<span class="mui-pull-right mui-nearby-distant">
+								1.13km
+							</span>
+						</p>
+						<div class="mui-nearby-desc">
+							<p class="mui-nearby-ageAndElle">
+								<span class="mui-nearby-age-male">♀&nbsp;&nbsp;20</span>
+							</p>
+							<p class="mui-ellipsis mui-nearby-signatrue">我是隐形人，你看不到我</p>
+						</div>
+					</div>
+			</li>
+		</ul>
+	</div>
+		</div>
+	/*以下是模板处理*/
+		<script id="bangyoutemplate" type="text/html"></script>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/weschool.js"></script>
+		<script type="text/javascript" src="js/template.js" ></script>
+		<script type="text/javascript" src="js/mui.pullToRefresh.js"></script>
+		<script type="text/javascript" src="js/mui.pullToRefresh.material.js"></script>
+		<script type="text/javascript" src="js/mui.lazyload.js"></script>
+		<script type="text/javascript" src="js/mui.lazyload.img.js"></script>
+		<script type="text/javascript">
+			var mask = null; //蒙版对象
+			var bangyoulist_main = null; //foodlist_main WebView object
+		
+			//初始配置
+			mui.init({
+				gestureConfig: {
+					swipe: true //启用滑动手势
+				}
+			});
+
+			mui('#filter_scroll').scroll({
+				indicators: true //是否显示滚动条
+			});
+			mui.plusReady(function(){
+				mui('.mui-scroll-wrapper').scroll({
+					bounce: false,
+					indicators: true, //是否显示滚动条
+					deceleration: 0.0009
+				});
+				
+			});
+		</script>
+	</body>
+</html>

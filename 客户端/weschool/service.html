@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>服务页面</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/ws.css" rel="stylesheet" />
+		<script src="js/mui.min.js"></script>
+		<style>
+			.header-text{
+				display: inline-block;
+				border-bottom: 1vw solid #0386fb;
+			}
+			
+		</style>
+	</head>
+
+	<body>
+		<div class="mui-bar-header-secondary">
+			<div style="width:60vw;position: absolute;left: 20vw;">
+				<div class="mui-segmented-control mui-segmented-control-inverted">
+					<a class="mui-control-item" data-href="./service/bangyou1.html" >
+						<span class="header-text">帮柚</span>
+					</a>
+					<a class="mui-control-item" data-href="./service/xianzhi.html">
+						闲置
+					</a>
+					<a class="mui-control-item" data-href="./service/activity.html">
+						活动
+					</a>
+					<a class="mui-control-item" data-href="./service/lostAndFound.html">
+						招领
+					</a>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script>
+		mui.init({
+			preloadPages: [{ 
+				url: "./service/bangyou1.html",
+				id: "./service/bangyou1.html"
+			}, {
+				url: "./service/xianzhi.html",
+				id: "./service/xianzhi.html"
+			}, {
+				url: "./service/activity.html",
+				id: "./service/activity.html"
+			}, {
+				url: "./service/lostAndFound.html",
+				id: "./service/lostAndFound.html"
+			}, {
+				url: "./service/partTimeJob.html",
+				id: "./service/partTimeJob.html"
+			}]
+		});
+		document.addEventListener('plusready', function() {
+			var subpages = ["./service/bangyou1.html", "./service/xianzhi.html", "./service/activity.html","./service/lostAndFound.html", "./service/partTimeJob.html"];
+			var subpage_style = {
+				top: "52px",
+				bottom: "0px"
+			};
+			var self = plus.webview.currentWebview();
+			var activeTab = null;
+			for(var i = 0; i < 5; i++) {
+				var sub = plus.webview.create(subpages[i], subpages[i], subpage_style);
+				if(i > 0) {
+					sub.hide();
+				} else {
+					activeTab = subpages[i]
+				}
+				self.append(sub);
+			}
+			mui(".mui-segmented-control").on("tap", "a", function(e) {
+				var targetTab = this.getAttribute("data-href");
+				if(targetTab == activeTab) {
+					return;
+				};
+				plus.webview.hide(activeTab);
+				plus.webview.show(targetTab);
+				//更改当前活跃的选项
+				activeTab = targetTab;
+			})
+		});
+	</script>
+
+</html>

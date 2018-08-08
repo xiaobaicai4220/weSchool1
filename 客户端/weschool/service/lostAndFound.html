@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html class="ui-page-login">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<style>	
+			.mui-card .mui-control-content {
+				padding: 10px;
+			}
+			
+			.mui-control-content {
+				height: 150px;
+			}
+			
+			.mui-segmented-control.mui-segmented-control-inverted .mui-control-item {
+				color: #646464;
+			}
+			
+			.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
+				color: #f63;
+				border-bottom: 0;
+			}
+			
+			.mui-bar-header-secondary {
+				background-color: #fff;
+				box-shadow: 0 0 1px rgba(0, 0, 0, .5);
+				height: 44px;
+				padding: 5px;
+			}
+			
+			.mui-table-view-cell {
+				font-size: 15px;
+			}
+			
+			#item1 {
+				height: 170px;
+			}
+			
+			.mui-backdrop {
+				top: 44px;
+			}
+			
+			.mui-control-content {
+				border-top: 1px solid #c8c7cc;
+			}
+			
+			.cellselected {
+				background-color: #efeff4;
+				color: #f63;
+			}
+			
+			.dp_filter_content {
+				position: fixed;
+				top: 43px;
+				left: 0;
+				width: 100%;
+				z-index: 1500;
+			}
+			
+			p.mui-ellipsis {
+				/*white-space: normal;*/
+			}
+			.mui-img{
+				width:25vw;
+				height:25vw;
+			}
+			.lostAndFound-title{
+				font-size:5vw;
+				color:#000000
+			}
+		</style>
+	</head>
+	<body>
+		<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+			<div id="scroll" class="mui-scroll">
+				<!--筛选条件的设计-->
+				<div class="mui-input-row mui-search">
+					<input type="search" class="mui-input-clear" placeholder="请输入要查询的失物或失主信息">
+				</div>
+				<ul class="mui-table-view" id="bangyoulist">
+					<li class="mui-table-view-cell mui-media" data-id="{{deal_id}}">
+						<p><span class="lostAndFound-title">旋转陀螺</span></p>
+						<a href="javascript:;">
+							<img class="mui-img mui-pull-left" src="../image/lost/1.jpg" onerror="this.src='imgs/lazyload.png'">
+							<div class="mui-media-body">
+								<p class="find-location">发现地点:北区商业街</p>
+								<p class="find-time">发现时间:2018-7-18</p>
+								<p class="find-name">失主姓名:未知</p>
+								<p class="find-number">失主学号:未知</p>
+							</div>
+						</a>	
+					</li>
+					<li class="mui-table-view-cell mui-media" data-id="{{deal_id}}">
+						<p><span class="lostAndFound-title">钱包</span></p>
+						<a href="javascript:;">
+							<img class="mui-img mui-pull-left" src="../image/lost/2.jpg" onerror="this.src='imgs/lazyload.png'">
+							<div class="mui-media-body">
+								<p class="find-location">发现地点:图书馆2楼</p>
+								<p class="find-time">发现时间:2018-7-17</p>
+								<p class="find-name">失主姓名:未知</p>
+								<p class="find-number">失主学号:未知</p>
+							</div>
+						</a>	
+					</li>
+					<li class="mui-table-view-cell mui-media" data-id="{{deal_id}}">
+						<p><span class="lostAndFound-title">钱包</span></p>
+						<a href="javascript:;">
+							<img class="mui-img mui-pull-left" src="../image/lost/3.jpg" onerror="this.src='imgs/lazyload.png'">
+							<div class="mui-media-body">
+								<p class="find-location">发现地点:北区曲水桥</p>
+								<p class="find-time">发现时间:2018-7-18</p>
+								<p class="find-name">失主姓名:未知</p>
+								<p class="find-number">失主学号:未知</p>
+							</div>
+						</a>	
+					</li>
+					<li class="mui-table-view-cell mui-media" data-id="{{deal_id}}">
+						<p><span class="lostAndFound-title">钥匙串</span></p>
+						<a href="javascript:;">
+							<img class="mui-img mui-pull-left" src="../image/lost/4.jpg" onerror="this.src='imgs/lazyload.png'">
+							<div class="mui-media-body">
+								<p class="find-location">发现地点:一教</p>
+								<p class="find-time">发现时间:2018-7-17</p>
+								<p class="find-name">失主姓名:未知</p>
+								<p class="find-number">失主学号:未知</p>
+							</div>
+						</a>	
+					</li>
+					<li class="mui-table-view-cell mui-media" data-id="{{deal_id}}">
+						<p><span class="lostAndFound-title">魅族耳机</span></p>
+						<a href="javascript:;">
+							<img class="mui-img mui-pull-left" src="../image/lost/5.jpg" onerror="this.src='imgs/lazyload.png'">
+							<div class="mui-media-body">
+								<p class="find-location">发现地点:3食堂</p>
+								<p class="find-time">发现时间:2018-7-18</p>
+								<p class="find-name">失主姓名:未知</p>
+								<p class="find-number">失主学号:未知</p>
+							</div>
+						</a>	
+					</li>
+					<li class="mui-table-view-cell mui-media" data-id="{{deal_id}}">
+						<p><span class="lostAndFound-title">Rate手表</span></p>
+						<a href="javascript:;">
+							<img class="mui-img mui-pull-left" src="../image/lost/6.jpg" onerror="this.src='imgs/lazyload.png'">
+							<div class="mui-media-body">
+								<p class="find-location">发现地点:图书馆</p>
+								<p class="find-time">发现时间:2018-7-17</p>
+								<p class="find-name">失主姓名:未知</p>
+								<p class="find-number">失主学号:未知</p>
+							</div>
+						</a>	
+					</li>
+					<li class="mui-table-view-cell mui-media" data-id="{{deal_id}}">
+						<p><span class="lostAndFound-title">饭卡</span></p>
+						<a href="javascript:;">
+							<img class="mui-img mui-pull-left" src="../image/lost/7.jpg" onerror="this.src='imgs/lazyload.png'">
+							<div class="mui-media-body">
+								<p class="find-location">发现地点:北区曲水桥</p>
+								<p class="find-time">发现时间:2018-7-18</p>
+								<p class="find-name">失主姓名:张琼文</p>
+								<p class="find-number">失主学号:1060116212</p>
+							</div>
+						</a>	
+					</li>
+					<li class="mui-table-view-cell mui-media" data-id="{{deal_id}}">
+						<p><span class="lostAndFound-title">充电器和数据线</span></p>
+						<a href="javascript:;">
+							<img class="mui-img mui-pull-left" src="../image/lost/8.jpg" onerror="this.src='imgs/lazyload.png'">
+							<div class="mui-media-body">
+								<p class="find-location">发现地点:一教</p>
+								<p class="find-time">发现时间:2018-7-17</p>
+								<p class="find-name">失主姓名:未知</p>
+								<p class="find-number">失主学号:未知</p>
+							</div>
+						</a>	
+					</li>
+				</ul>
+			</div>
+		</div>
+	/*以下是模板处理*/
+		<script id="bangyoutemplate" type="text/html"></script>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/weschool.js"></script>
+		<script type="text/javascript" src="../js/template.js" ></script>
+		<script type="text/javascript" src="../js/mui.pullToRefresh.js"></script>
+		<script type="text/javascript" src="../js/mui.pullToRefresh.material.js"></script>
+		<script type="text/javascript" src="../js/mui.lazyload.js"></script>
+		<script type="text/javascript" src="../js/mui.lazyload.img.js"></script>
+		<script type="text/javascript">
+			var mask = null; //蒙版对象
+			var bangyoulist_main = null; //foodlist_main WebView object
+		
+			//初始配置
+			mui.init({
+				gestureConfig: {
+					swipe: true //启用滑动手势
+				}
+			});
+
+			mui('#filter_scroll').scroll({
+				indicators: true //是否显示滚动条
+			});
+			mui.plusReady(function(){
+				mui('.mui-scroll-wrapper').scroll({
+					bounce: false,
+					indicators: true, //是否显示滚动条
+					deceleration: 0.0009
+				});
+				
+			});
+		</script>
+	</body>
+</html>

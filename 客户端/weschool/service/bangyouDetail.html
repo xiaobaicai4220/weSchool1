@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>订单详情页</title>
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../css/icon.css">
+		<link rel="stylesheet" href="../css/ws.css" />
+		<style>
+			.mui-bar {
+				background-color: rgba(255, 255, 255, 0);
+				height: 53px;
+				box-shadow: 0 0 0;
+			}
+			
+			.mui-content {
+				position: relative;
+				top: 50vw;
+				/*border: 1px solid #000000;*/
+				width: 100vw;
+				background-color: rgba(255, 255, 255, 1);
+				height: 120vw;
+			}
+			
+			.confirm {
+				position: relative;
+				top: 10px;
+				display: block;
+				width: 90vw;
+				left: 5vw;
+				height: 40px;
+				border-radius: 5px;
+				background-color: #00D5F7;
+				text-align: center;
+			}
+			
+			.content-title {
+				color: #929292;
+				font-size: 4vw;
+				border-bottom: 1px solid #AAAAAA;
+				height: 6vw;
+			}
+			
+			.back-img {
+				position: absolute;
+				top: 0px;
+				width: 100vw;
+				height: 100vw;
+				/*border: 1px solid #000000;*/
+				-webkit-filter: blur(3px);
+			}
+			
+			.order-location p {
+				border-bottom: 1px solid #D2D2D2;
+			}
+			
+			.order-location p:nth-child(1) {
+				height: 15vw;
+				/*border: 1px solid #27F9E1;*/
+				text-align: center;
+			}
+			
+			.order-location p:nth-child(1) label {
+				position: relative;
+				top: 8vw;
+			}
+			
+			.detail-content {
+				/*border: 1px solid #000000;*/
+				font-size: 8vw;
+				color: #000000;
+				position: relative;
+				top: 3vw;
+				text-align: center;
+			}
+			
+			.detail-location-text {
+				display: inline-block;
+				width: 30vw;
+				height: 6vw;
+				/*border: 1px solid #2AC845;*/
+				background: #F4D000;
+				border-radius: 4vw;
+				position: relative;
+				bottom: 4vw;
+				box-shadow: 0 0 5px #fef85d;
+			}
+			
+			.detail-user {
+				height: 32vw;
+				/*border: 1px solid #0062CC;*/
+				position: relative;
+				bottom: 16vw;
+			}
+			
+			.detail-order {
+				height: 60vw;
+				width: 92vw;
+				/*border: 1px solid #000000;*/
+				left: 4vw;
+				position: relative;
+				bottom: 10vw;
+			}
+			
+			.detail-user-content {
+				/*border: 1px solid #00D5F7;*/
+				height: 32vw;
+			}
+			
+			.mui-mine-head {
+				width: 27vw;
+				height: 32vw;
+				/*border: 1px solid #2AC845;*/
+				display: inline-block;
+			}
+			
+			.mui-mine-head-pic {
+				display: inline-block;
+				width: 22vw;
+				height: 22vw;
+				border-radius: 11vw;
+				margin: 4vw;
+				box-shadow: 0 0 10px #999999;
+			}
+			
+			.detail-user-content-content {
+				position: absolute;
+				top: 0px;
+				left: 28vw;
+				display: inline-block;
+				/*border: 1px solid #00D5F7;*/
+				width: 60vw;
+				height: 32vw;
+			}
+			
+			.detail-user-content-content p {
+				display: block;
+				/*border: 1px solid #000000;*/
+				position: absolute;
+				font-size: 3.5vw;
+			}
+			
+			.detail-user-content-content p:nth-child(1) {
+				top: 5vw;
+				font-size: 7vw;
+				color: #FFFFFF;
+			}
+			
+			.detail-user-content-content p:nth-child(2) {
+				top: 16vw;
+				color: #a5a5a5;
+			}
+			
+			.detail-user-content-content p:nth-child(3) {
+				top: 22vw;
+				color: #a5a5a5;
+			}
+			
+			.order-location {
+				display: inline-block;
+				width: 90vw;
+				/*border: 1px solid #000000;*/
+			}
+			
+			.order-warning {
+				/*border: 1px solid #000000;*/
+				display: block;
+				width: 70vw;
+				text-align: center;
+				position: relative;
+				left: 10vw;
+				top: 5vw;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-nav">
+			<span class="mine-header-title">快递详情</span>
+			<div class="userInfo-header-left" data-href="back">
+				<span class="mui-icon mui-icon-extra mui-icon-extra-left"></span>
+				<span class="mui-header-text">返回</span>
+			</div>
+		</header>
+		<img onerror="this.src='../image/head13.jpg'" class="back-img">
+		</img>
+		<div class="mui-content">
+			<div class="detail-user">
+				<div class="detail-user-content">
+					<div class="mui-mine-head">
+						<img class=" mui-pull-left mui-mine-head-pic" onerror="this.src='../image/head13.jpg'">
+					</div>
+					<div class="detail-user-content-content">
+						<p class="">卢秀</p>
+						<p class="">
+							<span class="mui-icon-extra mui-icon-extra-woman" style="background-size:3.5vw 3.5vw;width: 3.5vw;height: 3.5vw;"></span> <span id="major">商学院-工商管理-17级</span></p>
+						<p class="">&nbsp;&nbsp;&nbsp;&nbsp;我在等风,也在等你</p>
+					</div>
+				</div>
+			</div>
+			<div class="detail-order">
+				<p class="content-title">
+					订单详情
+				</p>
+				<div class="order-location">
+					<p class="detail-location">
+						<label class="mui-pull-left">地点:</label>
+						<span class="detail-location-text"></span>
+						<span class="mui-icon-extra mui-icon-extra-arrowdown" style="background-size: 12vw 12vw; width: 12vw; height: 12vw;"></span>
+						<span class="detail-location-text"></span>
+					</p>
+					<p class="detail-location">
+						<label class="mui-pull-left">时间:&nbsp;&nbsp;</label>
+						<span></span>
+					</p>
+					<p class="detail-location">
+						<label class="mui-pull-left">积分:&nbsp;&nbsp;  </label>
+						<span></span>
+					</p>
+					<p class="detail-location">
+						<label class="mui-pull-left">备注:&nbsp;&nbsp;</label>
+						<span></span>
+					</p>
+				</div>
+				<div class="order-warning">
+					<span class="mui-icon-extra mui-icon-extra-warn" style="background-size: 4vw 4vw; width: 4vw;height: 4vw;"></span>
+					<span style="font-size: 3vw;">为保护用户隐私,订单更多信息仅接单后可见</span>
+				</div>
+			</div>
+			<button type="button" class="confirm mui-button " style="color: #FFFFFF; font-size: 15px;" data-loading-icon-position="right" data-loading-text="请稍后...">接单</button>
+		</div>
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script src="../js/ws.js"></script>
+	<script>
+		mui.init({});
+		mui.plusReady(function() {
+			//获取页面元素
+			var pages = {
+				backImg: document.getElementsByClassName("back-img")[0],
+				headImg: document.getElementsByClassName("mui-mine-head-pic")[0],
+				userName: document.querySelector('.detail-user-content-content p:nth-child(1)'),
+				iconSex: document.getElementsByClassName("mui-icon-extra-woman")[0],
+				major: document.getElementById("major"),
+				signature: document.querySelector(".detail-user-content-content p:nth-child(3)"),
+				location: document.getElementsByClassName("detail-location-text")[0],
+				address: document.getElementsByClassName("detail-location-text")[1],
+				time: document.querySelector(".detail-location:nth-child(2) span"),
+				jifen: document.querySelector(".detail-location:nth-child(3) span"),
+				remarks: document.querySelector(".detail-location:nth-child(4) span"),
+			}
+			var id = null; //保存当前订单ID
+
+			//init();
+			//页面元素渲染测试
+			function init() {
+				//pages.backImg.setAttribute('src',"./image/head2.jpg");
+				//pages.headImg.setAttribute('src',"./image/head2.jpg");
+				//pages.userName.innerHTML = '小白菜';
+				//pages.iconSex.classList.remove('mui-icon-extra-woman');
+				//pages.iconSex.classList.add('mui-icon-extra-man');
+				//pages.major.innerHTML = '物联网-计科-15级';
+				//pages.signature.innerHTML = '不能击倒我的都将使我更强大';
+				//pages.location.innerHTML = '南门';
+				//pages.address.innerHTML = '北门';
+				//pages.time.innerHTML = '13:40~22:10';
+				//pages.jifen.innerHTML = '40';
+				//pages.remarks.innerHTML = '注意轻放'
+			}
+
+			/*监听前页面传来的事件*/
+			document.addEventListener('get_detail', function(event) {
+				id = event.detail.id;
+				if(!id) {
+					return;
+				}
+
+				//从数据库中获取id数据,并直接渲染
+				var dataA = ws.key.getValue(id);
+				pages.backImg.setAttribute('src', dataA.putUserHeaderImgUrl);
+				pages.headImg.setAttribute('src', dataA.putUserHeaderImgUrl);
+				pages.userName.innerHTML = dataA.putUserName;
+				pages.location.innerHTML = dataA.location;
+				pages.address.innerHTML = dataA.address;
+				pages.time.innerHTML = dataA.time.slice(0, 2) + ":" + dataA.time.slice(2, 4) + "~" + dataA.time.slice(4, 6) + ":" + dataA.time.slice(6, 8); //'13:40~22:10';
+				pages.jifen.innerHTML = dataA.jifen;
+				pages.remarks.innerHTML = dataA.remarks;
+
+				//ws.token.setUserToken('2LmFcUrFV2NnipDGWo554RlMory3j/krn1zoDxMMp2U=.HxhU8LZov6wsgq/mS1mHlClcc1306IVQ+rRGWENeJlc=');
+				//从本地存储中获取数据
+				var userInfo = ws.key.getValue('userInfo' + dataA.putUserName);
+				if(userInfo) {
+					render(userInfo);
+					return;
+				}
+				//向服务端请求用户个人资料
+				mui.ajax(ws.ws_url.userInfo.getOtherUserInfo, {
+					type: "POST",
+					headers: {
+						'Content-Type': 'application/json;charset=utf-8'
+					},
+					data: JSON.stringify({
+						'token': ws.token.getUserToken(),
+						'phone': dataA.putUserPhone
+					}),
+					success: function(data) {
+						if(data.type == 0) {
+							//保存当前用户资料
+							ws.key.setValue('userInfo' + dataA.putUserName, data.userInfo);
+							//渲染页面
+							render(data.userInfo);
+							return;
+
+						}
+					},
+					err: function(xhr, type, errorThrown) {
+						异常处理
+						alert(type);
+					}
+				})
+			});
+
+			function render(userInfo) {
+				//渲染页面
+				if(userInfo.sex = "man") {
+					pages.iconSex.classList.remove('mui-icon-extra-woman');
+					pages.iconSex.classList.add('mui-icon-extra-man');
+				}
+				if(userInfo.sex = "serect") {
+					pages.iconSex.classList.remove('mui-icon-extra-woman');
+				}
+				if(userInfo.institute) {
+					pages.major.innerHTML = userInfo.institute;
+				}
+				if(userInfo.grade) {
+					pages.major.innerHTML += " " + userInfo.grade
+				}
+				if(userInfo.userSignature) {
+					pages.signature.innerHTML = userInfo.userSignature;
+				}
+			}
+
+			/** 监听页面元素 **/
+			var backbtn = document.getElementsByClassName("mui-header-text")[0]; //返回按钮
+			var confirm = document.getElementsByClassName('confirm')[0]; //接单按钮
+			backbtn.addEventListener('tap', function() {
+				mui.back();
+				return;
+			})
+
+			/**  监听 接单按钮  **/
+			confirm.addEventListener('tap', function() {
+				//将按钮置等待状态
+				mui(this).button('loading');
+				//ajax接受订单
+				mui.ajax(ws.ws_url.bangyou.accept, {
+					type: "POST",
+					headers: {
+						'Content-Type': 'application/json;charset=utf-8'
+					},
+					data: JSON.stringify({
+						'token': ws.token.getUserToken(),
+						'userName': ws.data.userInfo.getUserInfo().name,
+						'userHeadImgUrl': ws.data.userInfo.getUserInfo().userHeaderImgUrl,
+						'_id': id,
+					}),
+					success: function(data) {
+						if(data.type == 0) {
+							//接单成功
+							mui.alert('订单详情可至我的订单查看','成功接受订单',function(){
+								mui(confirm).button('reset');
+								mui.back();
+							})
+							return;
+						}
+						if(data.type == 1) {
+							mui.alert('可能原因:以被其他人接单','接单失败',function(){
+								mui(confirm).button('reset');
+								mui.back();
+							})
+							return;
+						}
+						mui.alert('服务器出错，请稍后再试',function(){
+								mui(confirm).button('reset');
+								mui.back();
+							})
+						return;
+					},
+					err: function(xhr, type, errorThrown) {
+						异常处理
+						alert(type);
+					}
+				})
+
+			})
+			
+			/** 监听头像 **/
+			pages.headImg.addEventListener('tap',function(){
+				plus.nativeUI.toast('点击了头像，可惜个人资料页还没有写');
+			})
+
+		})
+	</script>
+
+</html>

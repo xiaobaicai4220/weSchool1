@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html class="ui-page-login">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<style>	
+			.mui-card .mui-control-content {
+				padding: 10px;
+			}
+			
+			.mui-control-content {
+				height: 150px;
+			}
+			
+			.mui-segmented-control.mui-segmented-control-inverted .mui-control-item {
+				color: #646464;
+			}
+			
+			.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
+				color: #f63;
+				border-bottom: 0;
+			}
+			
+			.mui-bar-header-secondary {
+				background-color: #fff;
+				box-shadow: 0 0 1px rgba(0, 0, 0, .5);
+				height: 44px;
+				padding: 5px;
+			}
+			
+			.mui-table-view-cell {
+				font-size: 15px;
+			}
+			
+			#item1 {
+				height: 170px;
+			}
+			
+			.mui-backdrop {
+				top: 44px;
+			}
+			
+			.mui-control-content {
+				border-top: 1px solid #c8c7cc;
+			}
+			
+			.cellselected {
+				background-color: #efeff4;
+				color: #f63;
+			}
+			
+			.dp_filter_content {
+				position: fixed;
+				top: 43px;
+				left: 0;
+				width: 100%;
+				z-index: 1500;
+			}
+			
+			p.mui-ellipsis {
+				/*white-space: normal;*/
+			}
+			.mui-img{
+				width:90vw;
+				height:50vw;
+			}
+			.activity-title{
+				font-size:5vw;
+				color:#000000
+			}
+			.activity-content{
+				font
+			}
+		</style>
+	</head>
+	<body>
+		<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+			<div id="scroll" class="mui-scroll">
+				<ul class="mui-table-view" id="bangyoulist">
+					<li class="mui-table-view-cell mui-media" data-id="{{deal_id}}">
+						<p><span class="activity-title">HackerBox招人</span></p>
+						<p><span class="activity-content">你喜欢编程吗？废寝忘食的那种。开发，爬虫，人工智能，大数据，渗透，逆向，二进制，树莓派...我们因为兴趣聚在一起，我们等你到来。</span></p>
+						<a href="javascript:;">
+							<img class="mui-img mui-pull-left" src="../image/activity/5.jpg" onerror="this.src='imgs/lazyload.png'">
+						</a>	
+						<p><span class="mui-pull-left">地点:www.xiaobaicai.fun</span><span class="mui-pull-right">时间:不限</span></p>
+					</li>
+					<li class="mui-table-view-cell mui-media" data-id="{{deal_id}}">
+						<p><span class="activity-title">骑迹7日环太湖</span></p>
+						<p><span class="activity-content">这个十一，还宅在宿舍打游戏吗？来和骑迹相约太湖吧，等你来哦。</span></p>
+						<a href="javascript:;">
+							<img class="mui-img mui-pull-left" src="../image/activity/2.jpg" onerror="this.src='imgs/lazyload.png'">
+						</a>
+						<p><span class="mui-pull-left">地点:江南大学</span><span class="mui-pull-right">时间:2018-10-1</span></p>
+					</li>
+					<li class="mui-table-view-cell mui-media" data-id="{{deal_id}}">
+						<p><span class="activity-title">迪士尼乐园邀约</span></p>
+						<p><span class="activity-content">一直想去迪士尼玩，有小伙伴想要一起去吗？</span></p>
+						<a href="javascript:;">
+							<img class="mui-img mui-pull-left" src="../image/activity/3.jpg" onerror="this.src='imgs/lazyload.png'">
+						</a>	
+						<p><span class="mui-pull-left">地点:上海迪士尼乐园</span><span class="mui-pull-right">时间:2018-9-20</span></p>
+					</li>
+					<li class="mui-table-view-cell mui-media" data-id="{{deal_id}}">
+						<p><span class="activity-title">校书法大赛报名通知</span></p>
+						<p><span class="activity-content">你是否想过挥笔撒墨，挥斥方遒？是否有过一个文人墨客的想法？欢迎报名江南大学第13届书法大赛。</span></p>
+						<a href="javascript:;">
+							<img class="mui-img mui-pull-left" src="../image/activity/4.jpg" onerror="this.src='imgs/lazyload.png'">
+						</a>	
+						<p><span class="mui-pull-left">地点:江南大学文浩馆</span><span class="mui-pull-right">时间:2018-9-18</span></p>
+					</li>
+					
+				</ul>
+			</div>
+		</div>
+	/*以下是模板处理*/
+		<script id="bangyoutemplate" type="text/html"></script>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/weschool.js"></script>
+		<script type="text/javascript" src="../js/template.js" ></script>
+		<script type="text/javascript" src="../js/mui.pullToRefresh.js"></script>
+		<script type="text/javascript" src="../js/mui.pullToRefresh.material.js"></script>
+		<script type="text/javascript" src="../js/mui.lazyload.js"></script>
+		<script type="text/javascript" src="../js/mui.lazyload.img.js"></script>
+		<script type="text/javascript">
+			var mask = null; //蒙版对象
+			var bangyoulist_main = null; //foodlist_main WebView object
+		
+			//初始配置
+			mui.init({
+				gestureConfig: {
+					swipe: true //启用滑动手势
+				}
+			});
+
+			mui('#filter_scroll').scroll({
+				indicators: true //是否显示滚动条
+			});
+			mui.plusReady(function(){
+				mui('.mui-scroll-wrapper').scroll({
+					bounce: false,
+					indicators: true, //是否显示滚动条
+					deceleration: 0.0009
+				});
+				
+			});
+		</script>
+	</body>
+</html>

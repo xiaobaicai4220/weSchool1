@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html class="ui-page-login">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<style>	
+			.mui-card .mui-control-content {
+				padding: 10px;
+			}
+			
+			.mui-control-content {
+				height: 150px;
+			}
+			
+			.mui-segmented-control.mui-segmented-control-inverted .mui-control-item {
+				color: #646464;
+			}
+			
+			.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
+				color: #f63;
+				border-bottom: 0;
+			}
+			
+			.mui-bar-header-secondary {
+				background-color: #fff;
+				box-shadow: 0 0 1px rgba(0, 0, 0, .5);
+				height: 44px;
+				padding: 5px;
+			}
+			
+			.mui-table-view-cell {
+				font-size: 15px;
+			}
+			
+			#item1 {
+				height: 170px;
+			}
+			
+			.mui-backdrop {
+				top: 44px;
+			}
+			
+			.mui-control-content {
+				border-top: 1px solid #c8c7cc;
+			}
+			
+			.cellselected {
+				background-color: #efeff4;
+				color: #f63;
+			}
+			
+			.dp_filter_content {
+				position: fixed;
+				top: 43px;
+				left: 0;
+				width: 100%;
+				z-index: 1500;
+			}
+			
+			p.mui-ellipsis {
+				/*white-space: normal;*/
+			}
+			.mui-img{
+				border-radius:10vw;
+			}
+			.mui-new-number{
+				background-color: #007AFF;
+				color:#000000;
+				border-radius:2vw;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="pulls" class="mui-content mui-scroll-wrapper">
+			<div id="scroll" class="mui-scroll">		
+		<ul class="mui-table-view" id="bangyoulist">
+			<li class="mui-table-view-cell mui-media" data-id="{{deal_id}}">
+				<div class="mui-slider-right mui-disabled">
+					<a class="mui-btn mui-btn-red">删除</a>
+				</div>
+				<div class="mui-slider-handle">
+					<a href="javascript:;">
+						<img class="mui-media-object mui-pull-left mui-img" src="../image/head1.jpg" onerror="this.src='imgs/lazyload.png'">
+						<div class="mui-media-body">
+							<span class="mui-username">小白菜</span>
+							<span class="deal_oldprice mui-pull-right">上午5:00</span>
+							<p class="mui-ellipsis">来打游戏吗？</p>
+						</div>
+					</a>
+				</div>
+			</li>
+			<li class="mui-table-view-cell mui-media" data-id="{{deal_id}}">
+				<div class="mui-slider-right mui-disabled">
+					<a class="mui-btn mui-btn-red">删除</a>
+				</div>
+				<div class="mui-slider-handle">
+					<a href="javascript:;">
+						<img class="mui-media-object mui-pull-left mui-img" src="../image/head2.jpg" onerror="this.src='imgs/lazyload.png'">
+						<div class="mui-media-body">
+							<span class="mui-username">小灰灰</span>
+							<span class="deal_oldprice mui-pull-right">上午4:00</span>
+							<p class="mui-ellipsis">出来浪啊，别宅家里了</p>
+						</div>
+					</a>
+				</div>	
+			</li>
+			<li class="mui-table-view-cell mui-media" data-id="{{deal_id}}">
+				<div class="mui-slider-right mui-disabled">
+					<a class="mui-btn mui-btn-red">删除</a>
+				</div>
+				<div class="mui-slider-handle">
+					<a href="javascript:;">
+						<img class="mui-media-object mui-pull-left mui-img" src="../image/head3.jpg" onerror="this.src='imgs/lazyload.png'">
+						<div class="mui-media-body">
+							<span class="mui-username">小辣椒</span>
+							<span class="deal_oldprice mui-pull-right">昨天</span>
+							<p class="mui-ellipsis">小白菜，我是不是快乐的小辣椒</p>
+						</div>
+					</a>
+				</div>	
+			</li>
+			<li class="mui-table-view-cell mui-media" data-id="{{deal_id}}">
+				<div class="mui-slider-right mui-disabled">
+					<a class="mui-btn mui-btn-red">删除</a>
+				</div>
+				<div class="mui-slider-handle">
+					<a href="javascript:;">
+						<img class="mui-media-object mui-pull-left mui-img" src="../image/head4.jpg" onerror="this.src='imgs/lazyload.png'">
+						<div class="mui-media-body">
+							<span class="mui-username">小布丁</span>
+							<span class="deal_oldprice mui-pull-right">昨天</span>
+							<p class="mui-ellipsis">一个布丁，两个布丁，都是布丁。</p>
+						</div>
+					</a>
+				</div>	
+			</li>
+			<li class="mui-table-view-cell mui-media" data-id="{{deal_id}}">
+				<div class="mui-slider-right mui-disabled">
+					<a class="mui-btn mui-btn-red">删除</a>
+				</div>
+				<div class="mui-slider-handle">
+					<a href="javascript:;">
+						<img class="mui-media-object mui-pull-left mui-img" src="../image/head5.jpg" onerror="this.src='imgs/lazyload.png'">
+						<div class="mui-media-body">
+							<span class="mui-username">小兔几</span>
+							<span class="deal_oldprice mui-pull-right">昨天</span>
+							<p class="mui-ellipsis">小白菜在不在</p>
+						</div>
+					</a>
+				</div>	
+			</li>
+			<li class="mui-table-view-cell mui-media" data-id="{{deal_id}}">
+				<div class="mui-slider-right mui-disabled">
+					<a class="mui-btn mui-btn-red">删除</a>
+				</div>
+				<div class="mui-slider-handle">
+					<a href="javascript:;">
+						<img class="mui-media-object mui-pull-left mui-img" src="../image/head6.jpg" onerror="this.src='imgs/lazyload.png'">
+						<div class="mui-media-body">
+							<span class="mui-username">小脑斧</span>
+							<span class="deal_oldprice mui-pull-right">昨天</span>
+							<p class="mui-ellipsis">吃鸡吗</p>
+						</div>
+					</a>
+				</div>	
+			</li>
+			<li class="mui-table-view-cell mui-media" data-id="{{deal_id}}">
+				<div class="mui-slider-right mui-disabled">
+					<a class="mui-btn mui-btn-red">删除</a>
+				</div>
+				<div class="mui-slider-handle">
+					<a href="javascript:;">
+						<img class="mui-media-object mui-pull-left mui-img" src="../image/head7.jpg" onerror="this.src='imgs/lazyload.png'">
+						<div class="mui-media-body">
+							<span class="mui-username">小乌龟</span>
+							<span class="deal_oldprice mui-pull-right">昨天</span>
+							<p class="mui-ellipsis">8月份的黑客马拉松去不去？</p>
+						</div>
+					</a>
+				</div>	
+			</li>
+			<li class="mui-table-view-cell mui-media" data-id="{{deal_id}}">
+				<div class="mui-slider-right mui-disabled">
+					<a class="mui-btn mui-btn-red">删除</a>
+				</div>
+				<div class="mui-slider-handle">
+					<a href="javascript:;">
+						<img class="mui-media-object mui-pull-left mui-img" src="../image/head8.jpg" onerror="this.src='imgs/lazyload.png'">
+						<div class="mui-media-body">
+							<span class="mui-username">小妲己</span>
+							<span class="deal_oldprice mui-pull-right">7月21日</span>
+							<p >
+								<span class="mui-ellipsis">你快说话</span>
+								<span class="mui-pull-right mui-new-number">33</span>
+							</p>
+							
+						</div>
+					</a>
+				</div>	
+			</li>
+		</ul>
+	</div>
+		</div>
+	/*以下是模板处理*/
+		<script id="bangyoutemplate" type="text/html"></script>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/weschool.js"></script>
+		<script type="text/javascript" src="../js/mui.pullToRefresh.js"></script>
+		<script type="text/javascript" src="../js/mui.pullToRefresh.material.js"></script>
+		<script type="text/javascript">
+		
+			//初始配置
+			mui.init({
+				/**
+				pullRefresh: {
+					container: '#pulls',
+					down: {
+						callback: pulldownRefresh
+					}
+				},**/
+				gestureConfig: {
+					swipe: true //启用滑动手势
+				}
+			});
+			/**
+			 * 下拉刷新具体业务实现
+			 */
+			function pulldownRefresh() {
+				setTimeout(function() {
+					var table = document.body.querySelector('.mui-table-view');
+					var cells = document.body.querySelectorAll('.mui-table-view-cell');
+					for (var i = cells.length, len = i + 3; i < len; i++) {
+						var li = document.createElement('li');
+						li.className = 'mui-table-view-cell mui-media';
+						str1 = '<div class="mui-slider-right mui-disabled"><a class="mui-btn mui-btn-red">删除</a></div>';
+						str2 = '<div class="mui-slider-handle"><a href="javascript:;"><img class="mui-media-object mui-pull-left mui-img" src="../image/head2.jpg"><div class="mui-media-body"><span class="mui-username">小灰灰</span><span class="deal_oldprice mui-pull-right">上午4:00</span><p class="mui-ellipsis">出来浪啊，别宅家里了</p></div></a></div>'
+						li.innerHTML = str1+str2;
+						//下拉刷新，新纪录插到最前面；
+						table.insertBefore(li, table.firstChild);
+					}
+					mui('#pulls').pullRefresh().endPulldownToRefresh(); //refresh completed
+				}, 1500);
+			}
+			mui('#filter_scroll').scroll({
+				indicators: true //是否显示滚动条
+			});
+			mui.plusReady(function(){
+				mui('.mui-scroll-wrapper').scroll({
+					bounce: false,
+					indicators: true, //是否显示滚动条
+					deceleration: 0.0009
+				});
+			});
+		</script>
+	</body>
+</html>

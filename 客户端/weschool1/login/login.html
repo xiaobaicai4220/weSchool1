@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html class="ui-page-login">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="../css/mui.min.css" rel="stylesheet" />
+
+		<style>
+			.area {
+				margin: 20px auto 0px auto;
+			}
+			
+			.mui-input-group {
+				margin-top: 10px;
+			}
+			
+			.mui-input-group:first-child {
+				margin-top: 20px;
+			}
+			
+			.mui-input-group label {
+				width: 22%;
+			}
+			
+			.mui-input-row label~input,
+			.mui-input-row label~select,
+			.mui-input-row label~textarea {
+				width: 78%;
+			}
+			
+			.mui-checkbox input[type=checkbox],
+			.mui-radio input[type=radio] {
+				top: 6px;
+			}
+			
+			.mui-content-padded {
+				margin-top: 25px;
+			}
+			
+			.mui-btn {
+				padding: 10px;
+			}
+			
+			.link-area {
+				display: block;
+				margin-top: 25px;
+				text-align: center;
+			}
+			
+			.spliter {
+				color: #bbb;
+				padding: 0px 8px;
+			}
+			
+			.oauth-area {
+				position: absolute;
+				bottom: 20px;
+				left: 0px;
+				text-align: center;
+				width: 100%;
+				padding: 0px;
+				margin: 0px;
+			}
+			
+			.oauth-area .oauth-btn {
+				display: inline-block;
+				width: 50px;
+				height: 50px;
+				background-size: 30px 30px;
+				background-position: center center;
+				background-repeat: no-repeat;
+				margin: 0px 20px;
+				/*-webkit-filter: grayscale(100%); */
+				border: solid 1px #ddd;
+				border-radius: 25px;
+			}
+			
+			.oauth-area .oauth-btn:active {
+				border: solid 1px #aaa;
+			}
+			
+			.oauth-area .oauth-btn.disabled {
+				background-color: #ddd;
+			}
+			
+			button.mui-btn {
+				background-color: #ff512f;
+				color: #fff;
+				border-color: #ff512f;
+			}
+			
+			.link-area a {
+				color: #FF512F;
+			}
+			
+			.mui-switch.mui-active {
+				border-color: #ff512f;
+				background-color: #ff512f;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<h1 class="mui-title">登录</h1>
+		</header>
+		<div class="mui-content">
+			<form id='login-form' class="mui-input-group">
+				<div class="mui-input-row">
+					<label>账号</label>
+					<input id='account' type="text" class="mui-input-clear mui-input" placeholder="请输入手机号">
+				</div>
+				<div class="mui-input-row">
+					<label>密码</label>
+					<input id='password' type="password" class="mui-input-clear mui-input" placeholder="请输入密码">
+				</div>
+			</form>
+			<form class="mui-input-group">
+				<ul class="mui-table-view mui-table-view-chevron">
+					<li class="mui-table-view-cell">
+						自动登录
+						<div id="autoLogin" class="mui-switch">
+							<div class="mui-switch-handle"></div>
+						</div>
+					</li>
+				</ul>
+			</form>
+			<div class="mui-content-padded">
+				<button id='login' class="mui-btn mui-btn-block" data-loading-text="请稍候">登录</button>
+				<div class="link-area">
+					<a id='reg'>注册账号</a> <span class="spliter">|</span>
+					<a id='forgetPassword'>忘记密码</a>
+				</div>
+			</div>
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/weschool.js"></script>
+		<script>
+			var login = {
+				btnLogin: document.getElementById("login"),
+				account: document.getElementById("account"),
+				password: document.getElementById("password"),
+				regButton: document.getElementById("reg"),
+				forgetPasswordButton: document.getElementById("forgetPassword"),
+				oauthArea: document.getElementById("oauthArea"),
+				autoLoginButton: document.getElementById("autoLogin"),
+				autoLogin: false
+			};
+			//用于隐藏下面的oauth区域
+			window.addEventListener('resize', function() {
+				login.oauthArea.style.display = document.body.clientHeight > 400 ? 'block' : 'none';
+			}, false);
+			mui.plusReady(function() {
+				var self = plus.webview.currentWebview();
+				var mine = plus.webview.getWebviewById("mine-offcanvasmenu.html");
+				login.btnLogin.addEventListener("tap", function() {
+					if(!meishiapp.regExp.notEmptyReg.test(login.account.value)) {
+						plus.nativeUI.toast('请输入手机号');
+						return;
+					}
+					if(!meishiapp.regExp.notEmptyReg.test(login.password.value)) {
+						plus.nativeUI.toast('请输入密码');
+						return;
+					}
+					mui(login.btnLogin).button("loading");
+					meishiapp.dataType.userInfo.UserTel = login.account.value;
+					meishiapp.dataType.userInfo.UserPass = login.password.value;
+					//console.log(JSON.stringify(meishiapp.dataType.userInfo));
+					//console.log(api_url.userLoginUrl);
+					mui.ajax(api_url.toUrl(api_url.userUrl.LoginUrl,weSchoolApp.dataType.userInfo), {
+						type: "POST",
+						headers: {
+							'Content-Type': 'application/json;charset=utf-8'
+						},
+						data: JSON.stringify(meishiapp.dataType.userInfo),
+						success: function(data) {
+							console.log(JSON.stringify(data));
+							mui.fire(mine, "updateLogin");
+							mui(login.btnLogin).button("reset");
+							//登录成功
+							if(data.status == "ok") {
+								//保存是否自动登录
+								var settings = meishiapp.getSettings();
+								settings.autoLogin = login.autoLogin;
+								meishiapp.setSettings(settings);
+								//保存用户token
+								meishiapp.SetUserToken(data.res);
+								//console.log(meishiapp.GetUserToken());
+								//转向登录前要打开的页面
+								console.log(self.data);
+								if(self.data) {
+									var data = JSON.parse(self.data);
+									//console.log(data.win);
+									if(data && data.win) {
+										mui.openWindow({
+											id: data.win,
+											url: data.win,
+											extras: {
+												data: JSON.stringify(data)
+											}
+										});
+									} else {
+										plus.webview.getWebviewById("main.html").show();
+									}
+									self.close();
+								}
+								else{
+									plus.webview.getWebviewById("main.html").show();
+									self.close();
+								}
+							} else {
+								plus.nativeUI.toast(data.res);
+							}
+						},
+						error: function(xhr, type, errorThrown) {
+							//异常处理；
+							console.log(type);
+							mui(login.btnLogin).button("reset");
+						}
+					});
+				});
+				//打开注册页面
+				login.regButton.addEventListener("tap", function() {
+					mui.openWindow({
+						id: "reg.html",
+						url: "reg.html",
+						extras: {
+							data: self.data
+						}
+					});
+				});
+				login.forgetPasswordButton.addEventListener("tap",function(){
+					mui.openWindow({
+						id:"forgetPassword.html",
+						url:"forgetPassword.html",
+						extras:{
+							data:self.data
+						}
+					});
+				});
+				//自动登录开关切换
+				login.autoLoginButton.addEventListener("toggle", function() {
+					login.autoLogin = !login.autoLogin;
+				});
+
+			});
+		</script>
+
+	</body>
+
+</html>

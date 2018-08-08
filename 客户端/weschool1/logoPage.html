@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" href="css/mui.min.css">
+		<style>
+			.icon-homelogo{
+				
+				background-size:65vw 65vw;
+				width:65vw;
+				height:65vw;
+				display:inline-block;
+				opacity:1.0;
+				background-image: url("image/svg/homelogo1.svg");
+				margin: 7.5vw;
+				
+			}
+			.container{
+				background: radial-gradient(rgba(0,200,247,255),rgba(3,43,249,255));
+				width: 80vw;
+				height:80vw;
+				position: absolute;
+				top:20vw;
+				left:5vw;
+				border-radius: 20vw;
+			}
+			.icon-people{
+				background-size:18vw 18vw;
+				width:18vw;
+				height:18vw;
+				display:inline-block;
+				opacity:1.0;
+				background-image: url("image/svg/people.svg");
+				margin: 7.5vw;
+				position: absolute;
+				top: 43vw;
+				left: 23vw;
+			}
+		</style>
+	</head>
+	<body>
+		<p class="container">
+			<span class="icon-homelogo"></span>
+			<span class="icon-people"></span>
+		</p>
+	</body>
+	<script>
+		var canvas = document.getElementById("canvas");
+		var ctx = canvas.getContext("2d");
+		
+		var grad = ctx.createLinearGradient(0,0,0,300);
+		//设置颜色基准
+		grad.addColorStop(0,"#0386fb");
+		grad.addColorStop(1,"#007AFF");
+		ctx.beginPath();
+		ctx.fillStyle = grad;
+		ctx.moveTo(0,0);
+		ctx.lineTo(300,0);
+		ctx.lineTo(300,300);
+		ctx.lineTo(0,300);
+		ctx.lineTo(0,0);
+		ctx.closePath();
+		ctx.fill();
+	</script>
+</html>

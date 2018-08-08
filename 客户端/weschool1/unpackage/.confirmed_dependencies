@@ -1,0 +1,92 @@
+{
+	"index.html": {
+		"refer": [
+			"service.html",
+			"find.html",
+			"contacts.html",
+			"mine.html",
+			"this.html",
+			"login/login.html"
+		],
+		"resources": [
+			"service.html",
+			"this.html"
+		]
+	},
+	"mine.html": {
+		"resources": [
+			"son.html"
+		],
+		"refer": [
+			"son.html"
+		]
+	},
+	"service.html": {
+		"resources": [
+			"service/bangyou.html",
+			"css/weschool.css"
+		],
+		"refer": [
+			"service/bangyou.html",
+			"service/partTimeJob.html",
+			"service/activity.html",
+			"service/xianzhi.html",
+			"service/lostAndFound.html"
+		]
+	},
+	"login/login.html": {
+		"refer": [
+			"login/reg.html",
+			"login/forgetPassword.html"
+		]
+	},
+	"contacts.html": {
+		"resources": [
+			"contacts/news.html"
+		],
+		"refer": [
+			"contacts/friends.html",
+			"contacts/news.html"
+		]
+	},
+	"find.html": {
+		"resources": [
+			"find/outSchool.html"
+		],
+		"refer": [
+			"find/habbyGroup.html",
+			"find/outSchool.html",
+			"find/inSchool.html",
+			"find/nearby.html"
+		]
+	},
+	"service/bangyou.html": {
+		"resources": [
+			"js/weschool.js"
+		]
+	},
+	"service/xianzhi.html": {
+		"resources": [
+			"js/mui.pullToRefresh.js",
+			"js/mui.pullToRefresh.material.js",
+			"js/mui.lazyload.js",
+			"js/template.js",
+			"js/mui.lazyload.img.js"
+		]
+	},
+	"find/nearby.html": {
+		"resources": [
+			"js/weschool.js"
+		]
+	},
+	"service/activity.html": {
+		"resources": [
+			"js/mui.pullToRefresh.js",
+			"js/mui.pullToRefresh.material.js",
+			"js/mui.lazyload.js",
+			"js/template.js",
+			"js/weschool.js",
+			"js/mui.lazyload.img.js"
+		]
+	}
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+	<head lang="en">
+		<meta charset="UTF-8">
+		<title></title>
+		<!--依托于jquery-->
+		<script src="js/jquery.js"></script>
+	</head>
+
+	<body>
+		<div class="container"> <label>file</label> <input type="file" name="file" id="file"> </div>
+		<script>
+			var file = $("#file")[0];
+			//这里使用的是onchange事件，所以当你选择完文件之后，就触发事件上传 
+			file.onchange = function() {
+			console.log("1");
+					//创建一个FormDate 
+					var formData = new FormData();
+					//将文件信息追加到其中
+					formData.append('file', file.files[0]);
+					//利用split切割，拿到上传文件的格式 
+					var src = file.files[0].name,
+						formart = src.split(".")[1];
+					//使用if判断上传文件格式是否符合
+					if(formart == "jpg" || formart == "png" || formart == "docx" || formart == "txt" || formart == "ppt" || formart == "xlsx" || formart == "zip" || formart == "rar" || formart == "doc") 
+					{
+						console.log("2");
+						//只有满足以上格式时，才会触发ajax请求
+						$.ajax({
+								url: '127.0.0.1:8081/upload',
+								type: 'POST',
+								data: formData,
+								cache: false,
+								contentType: false,
+								processData: false,
+								success: function(data) {
+									//上传成功之后，返回对象data 
+									if(data.code > 0) {
+										var src = data.data;
+										//利用返回值src 网络路径，来实现上传文档的下载 
+										if(formart == "docx" || formart == "txt" || formart == "doc") {
+											//结合css样式，实现显示图标
+											var className = "docx";
+											//拼接html，生成到页面上去
+											var msg = `<a href="${src}" rel="external nofollow" rel="external nofollow" rel="external nofollow" rel="external nofollow" ><i class="${className}"></i></a>`;
+										} else if(formart == "ppt") {
+											//PPT 格式 className="ppt"; 
+											msg = `<a href="${src}" rel="external nofollow" rel="external nofollow" rel="external nofollow" rel="external nofollow" ><i class="${className}"></i></a>`;
+										} else if(formart == "xlsx") {
+											//xlsx 格式 className="xlsx"; 
+											msg = `<a href="${src}" rel="external nofollow" rel="external nofollow" rel="external nofollow" rel="external nofollow" ><i class="${className}"></i></a>`;
+										} else if(formart == "zip" || formart == "rar") {
+											//zip || rar 格式 className="zip";
+											msg = `<a href="${src}" rel="external nofollow" rel="external nofollow" rel="external nofollow" rel="external nofollow" ><i class="${className}"></i></a>`;
+										} else {
+											//所有的图片格式
+											msg = `<a href="javascript:;" rel="external nofollow" class="picCheck"><img src="${src}"></a>`;
+										}
+										// 这里将msg 追加到你要显示的区域 
+									}
+								} //不满足上传格式时 
+							})
+					}else{
+								alert("文件格式不支持上传")
+					}
+				}
+		</script>
+	</body>
+
+</html>
