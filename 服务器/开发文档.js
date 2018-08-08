@@ -1,0 +1,272 @@
+
+/***
+ *@name weschool接口文档
+ *@author xiaobaicai
+ *@startTime 2018/7/26
+ *@lastTime  2018/8/6
+ **
+ 
+**命名规范
+*普通命名采用驼峰命名,
+*className,modelName 首字母大写
+
+**模块规范
+*公共模块 
+* 	前端  	ws.js  		标准化数据格式，数据持久化，全局接口地址，全局函数，
+* 		ws.css		全局样式
+		icon.css	全部icon
+		
+	后端	token_controller.js		全局token接口,判断token有效性
+		userInit_controller.js	账号初始化接口,连接所有初始化模块
+		
+**语言规范
+*前端 javascript 使用ES5标准语法
+*后端 使用ES6新特性语法
+	
+**开发流程规范
+*对于每一个待开发的模块，开发顺序如下,
+* 服务器端
+*1:写文档接口,在该文档中写明该模块对外部的接口，并写并接口处的数据格式
+*2:在服务器./models/ 文件夹中新建moduleName_model.js 规定数据库中数据存储模式
+*3:./controllers/ 文件夹中新建moduleName_controller.js  规定控制器格式
+*4:./routestests/ 引入该控制器,并将API接口连接控制器接口。
+* 客户端
+*5:ws.js 全局空间中引入接口API地址  和,一些特别的数据格式规格化
+*6:./js/posts/  文件夹中新建 moduleName_post.js  编写对API接口的ajax测试脚本，并保存。
+*7:前端测试完成， 引入指定页面使用。
+*8:指定页面测试, 测试页面中的功能是否完整
+*9:指定页面测试完成，整体测试,测试该模块的加入对整体造成的影响。
+*10:全部测试完成，开发下一个模块。
+*
+*注:用户输入测试，弱网环境测试，及其他相关测试，统一放在第一个原型开发完成后进行测试。
+*  模块开发只注重该模块实现的功能是否完整。
+****
+* 
+** 特殊情况处理规范遵循原则
+*1:小核心
+*2:小模块
+*3:小接触面
+*4:简单和实用
+*5:变量空间优于全局空间，模块空间优于变量空间
+*6:内存加数据库优于直接数据库
+*
+*
+** 编程风格规范
+*1:优雅胜于丑陋
+*2:明了胜于晦涩
+*3:简洁胜于复杂
+*4:复杂胜于凌乱
+*5:扁平胜于嵌套
+*6:间隔胜于紧凑
+*7:可读性很重要
+*8:即便假借特例的实用性之名，也不可违背这些规则
+*9:精准捕获异常
+*10:当存在多种可能时，应实际去测试可能性，不可猜测
+*11:做也许好过不做，但不假思索就动手还不如不做
+*12:如果你无法向人描述你的方案，那肯定不是一个好的方案。
+*13:好的方案都是简单的，复杂的令人难以理解的方案肯定不是一个好方案。
+* 
+* 
+***  公共模块   ***
+* 
+**  Token
+*数据库 token  {token，phone}
+* 
+*客户端	无客户端接口
+* 
+*服务器  	getPhone(token)	 	 	return phone
+* 		getToken(phone,pass)	return token
+* 		deleteToken(token)		return true/false
+
+** userInit
+* 数据库   	无数据库
+* 
+* 客户端   	无客户端接口
+* 
+* 服务器	userInit(phone)			return true/false
+
+** push
+* 数据库 	无数据库
+* 
+* 客户端	无客户端接口
+* 
+*
+** socket模块
+* 
+* 数据库    无数据库
+* 
+* 客户端	客户端接口 websocket连接
+* 服务器	
+* 		add('phone',data);	//添加一个向指定phone发送数据的请求
+* 		all(data);			//添加一个向所有连接者发送数据的请求
+* 		
+* data规范
+* 	事件
+* 		'service'	:表示来自服务的数据
+* 		'signal'	:表示来自单人聊天的数据
+* 		'mult'		:表示来自多人聊天的数据
+* 
+* 
+* 	事件分类  data.type
+* 		'service':
+* 			'bangyou':来自帮柚的数据
+* 		'signal':
+* 			'formPhone': 聊天用户对方的手机号
+* 			'type: 0,文字  1,图片
+* 			'data':
+* 		'mult':
+* 			'ID':聊天群号
+* 			'formPhone':发送方账号
+* 			'type': 0,文字  1,图片
+			'data': 
+** login模块
+*客户端:	/login/getCode	  		{phone}
+		/login/veriLogin		{phone,veri}
+		/login/passLogin		{phone,pass}
+		/login/regLogin			{phone,pass,veri}
+		
+ 服务器:	login.js	getCode    	{type,code}		type 0:获取验证码成功 1:错误
+					veriLogin  	{type,token}	type 0:登录成功 1：验证码错误 2:用户不存在
+					passLogin 	{type,token}	type 0:登录成功 1：用户不存在 2：密码错误
+					regLogin	{type,token}	type 0:注册成功 1：验证码错误 2：用户已存在
+
+数据库:	userpasslogins  	{phone,pass}
+		usertokens			{phone,token}
+
+
+** userInfo模块
+*客户端 	/userInfo/updateHeaderImg 
+				{token,ImgData} 
+		/userInfo/updateSignature
+				{token,userSignature}
+		/userInfo/updateUserInfo
+				{token,userInfo}
+		/userInfo/getOtherUserInfo
+				{token,phone}
+		/userInfo/getUserInfo
+				{token}
+				
+ 服务器 	userInfo.js updateHeaderImg {type,url}	type 0:上传成功 1:上传失败， url:上传后Img在服务器中的地址
+					updayeSignature {type}		type 0:修改成功 1:修改失败
+					updateUserInfo  {type}		type 0:成功 	1:失败
+					getUserInfo 	{type,userInfo}  type 
+ 
+ 数据库 	userinfos			{phone,backgroundImgUrl,userHeaderImgUrl,userSignature,...}
+
+
+** bangyou模块
+*数据库       未完成的订单  bangyouInfoStart 	
+* 	{_id,code,location,time,jifen,isOfficial,remarks,address,addressId, userName,putUserPhone,userheaderImgUrl,putTime}
+* 		正在进行的订单 bangyouInfoIng
+*   {_id,code,location,time,jifen,isOfficial,remarks,address,addressId, userName,putUserPhone,userheaderImgUrl,putTime,getTime,getUserName,getUserPhone,getUserheaderImgUrl,endType,}
+* 		已完成的订单  bangyouInfoEnd				
+* 	{_id,code,location,time,jifen,isOfficial,remarks,address,addressId, userName,putUserPhone,userheaderImgUrl,putTime,getTime,getUserName,getUserPhone,getUserheaderImgUrl,endType,endTime}
+* 			endType: 	false,	geter确认完成，puter还没有确认完成
+* 						true	puter确认完成
+
+*客户端 	/bangyou/put
+			{token,userName,userHeadImgUrl,{bangyouInfo}}
+			releaseInfo:{code,location,time,jifen,isOfficial,remarks,address}
+		/bangyou/getList
+			{token,time}	//time用于表示需要获取的时间的时间戳
+		/bangyou/accept
+			{token,userName,userHeadImgUrl,_id}
+		/bangyou/del
+			{token,_id}
+		/bangyou/get/BS
+			{token,time}	time,标记查询多久之前的订单。
+		/bangyou/get/BI
+			{token,time}	time,标记查询多久之前的订单
+		/bangyou/get/BE
+			{token，time}	time,标记查询多久之前的订单
+		/bangyou/end/geter
+			{token,_id}		//geter确认完成订单
+		/bangyou/end/puter
+			{token,_id}		//puter确认完成订单
+
+*服务器 	put  	//发布帮柚订单
+			toDB 	{phone,userName,userHeadImgUrl,bangyouInfo}
+			toC		{type}						type 0:发布成功  1:出错
+		
+		accept	 	//接受帮柚订单
+			toDB    {_id:acceptPhone = phone}
+			toIO	{'service',{'type':'bangyou'}}
+			toC		{type}						type 0:接单成功  1:已被别人接单  2:接单出错
+			
+		getList		//获取当前可接受订单
+			formDB 	list{_id,phone,userName,userHeadImgUrl,releaseInfo}
+			toC		{type,list{_id,phone,userName,userHeadImgUrl,releaseInfo}} 
+						type:0, 获取成功   1:无更多数据，  2:错误。
+				
+		del			//取消指定id的订单
+			toDB	del {phone,_id}
+			toC		{type}
+		
+		getBS		//获取自己的未完成订单
+			formDB	find{phone}（time>putTime）	from BS
+			toC		{type,list}	type:0,成功  type:1,找不到  type:2 错误
+		
+		getBI		//获取自己的正在接受的订单
+			formDB	find{phone} from BI
+			toC		{type,list}	type:0,成功  type:1,找不到 type:2 错误
+		
+		getBE		//获取自己的已完成的订单
+			formDB	find{phone} from BI
+			toC		{type,list} type:0,成功  type:1，找不到 type:2错误
+		
+		endGeter	//接受者确认完成订单
+			formDB	from BI find{_id} set endType=true;
+			toC		{type}	type:0,	1
+		endPuter	//发布者确认完成订单
+			foremB	from BI pop{_id} push BE;
+			toC		{type}  type:0, 1
+			
+*数据库	bangyouOrder{_id,phone,acceptPhone,userName,userHeadImgUrl,releaseInfo,}
+	
+	
+**address模块
+*   address模块数据库存储方式  {_id,phone,{address}} 
+* 客户端
+* 		/address/add
+* 			{token,{address}} {Aname,Aphone,Aaddress,AaddressDetail}
+* 		/address/delete
+* 			{token,id}	
+* 		/address/update
+* 			{token,id,{address}} {Aname,Aphone,Aaddress,AaddressDetail}
+* 		/address/get
+* 			{token}
+* 
+* 服务器
+* 		add
+* 			toDB	add	insert{address}
+* 			toC		{type,id}		type 0/1  id:addressId
+* 		delete
+* 			toDB	delete [address]:id = id
+* 			toC		{type} 			type 0:删除成功  1:删除失败(早已删除) 2:错误
+*		update
+* 			toDB	update	{address}
+* 			toC		{type}			type 0:成功   1:修改失败（不存在,）  2:错误 
+* 		get
+* 			toDB	find 	{address:phone = phone}
+* 			toC		{type,list}		type 0 查询成功   1 没有地址记录
+
+** 积分模块
+*数据库 		{phone,jifen,pass}
+* 
+*客户端	/jifen/query
+* 			{token}
+* 		/jifen/create
+* 			{token,pass}
+*服务器	create
+* 			toDB	create {phone,jifen,pass}
+* 			toC		{type}		0:创建成功  1:重复创建  2:未知错误
+* 		query
+* 			formDB 	find{jifen}
+* 			toC		{type,jifen}	0:查询成功 1:未发现  2:未知错误
+* 		add
+* 			toDB	add jifen
+* 			return	1:数据库错误  2:账号不存在  3:保存失败  0:成功
+* 		reduce
+* 			toDB	reduce jifen
+* 			return  1:数据库错误 2:账号不存在  3:密码错误  4:消费数额高于已有数额  5:保存失败  0：成功
+* 

@@ -7,7 +7,7 @@
  ***
  * 
 
-*** websocket通信   ***
+***  websocket通信   ***
 *  最简实例 标准
 *服务器	
 *  var WebSocketServer = require('ws').Server,
