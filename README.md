@@ -1,7 +1,7 @@
-
+﻿
 author = "xiaobaicai"
 startTime = "2018/7/16"
-descrption = "weschool App"
+descrption = "weschool H5 App"
 
 联系方式:QQ:1476410391
 
