@@ -7,78 +7,217 @@
 		<title></title>
 		<link href="../css/mui.min.css" rel="stylesheet" />
 		<style>	
-			.mui-card .mui-control-content {
-				padding: 10px;
+			body {
+				background-color: #E5E5E5;
 			}
 			
-			.mui-control-content {
-				height: 150px;
-			}
-			
-			.mui-segmented-control.mui-segmented-control-inverted .mui-control-item {
-				color: #646464;
-			}
-			
-			.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
-				color: #f63;
-				border-bottom: 0;
-			}
-			
-			.mui-bar-header-secondary {
-				background-color: #fff;
-				box-shadow: 0 0 1px rgba(0, 0, 0, .5);
-				height: 44px;
-				padding: 5px;
-			}
-			
-			.mui-table-view-cell {
-				font-size: 15px;
-			}
-			
-			#item1 {
-				height: 170px;
-			}
-			
-			.mui-backdrop {
-				top: 44px;
-			}
-			
-			.mui-control-content {
-				border-top: 1px solid #c8c7cc;
-			}
-			
-			.cellselected {
-				background-color: #efeff4;
-				color: #f63;
-			}
-			
-			.dp_filter_content {
-				position: fixed;
-				top: 43px;
-				left: 0;
-				width: 100%;
-				z-index: 1500;
-			}
 			
 			p.mui-ellipsis {
 				/*white-space: normal;*/
 			}
-			.xianzhi-img{
-				width:30vw;
-				height:46vw;
-			}
-			.activity-title{
-				font-size:5vw;
-				color:#000000
-			}
-			.activity-content{
-				font
-			}
-			.xianzhi-price{
-				color:red;
-			}
+
+
 			.mui-img{
 				border-radius:10vw;
+			}
+			.mui-scroll{
+				background-color:#e5e5e5 ;
+			}
+			.search-body{
+				height:40px;
+				width: 74vw;
+				position: relative;
+				left: 18vw;
+				margin-top:8px ;
+				margin-bottom: 0px;
+				background-color:#e5e5e5;
+			}
+			.mui-icon-extra-search2 {
+				display:inline-block;
+				width: 20px;
+				height: 20px;
+				background-size: 20px 20px;
+				background-image: url("../image/svg/search2.svg");
+				position: absolute;
+				top: 4px;
+				left: 6px;
+			}
+			.input-text{
+				display: inline-block;
+				height: 30px;
+				width: 55vw;
+				background-color: #FFFFFF;
+				border-radius: 7px;
+				line-height: 30px;
+				color: #9c9c9c;
+			}
+			.search-text{
+				display: inline-block;
+				height: 22px;
+				width: 40px;
+				background-color: #00D9D9;
+				text-align: center;
+				border-radius:22px;
+				line-height: 22px;
+				font-size: 12px;
+				color: #FFFFFF;
+			}
+			.search-text-one{
+				position: relative;
+				left: 30px;
+			}
+			.mui-icon-extra-location3 {
+				display:inline-block;
+				width: 20px;
+				height: 20px;
+				background-size: 20px 20px;
+				background-image: url("../image/svg/location3.svg");
+			}
+			.mui-icon-extra-comment2 {
+				display:inline-block;
+				width: 20px;
+				height: 20px;
+				background-size: 20px 20px;
+				background-image: url("../image/svg/comment2.svg");
+			}
+			.mui-icon-extra-like2 {
+				display:inline-block;
+				width: 20px;
+				height: 20px;
+				background-size: 20px 20px;
+				background-image: url("../image/svg/like2.svg");
+			}
+			.mui-icon-extra-dot {
+				display:inline-block;
+				width: 20px;
+				height: 20px;
+				background-size: 20px 20px;
+				background-image: url("../image/svg/dot.svg");
+				position: absolute;
+				left: 10vw;
+			}
+			
+			.xianzhi-container{
+				background-color:#E5E5E5;
+			}
+			
+			.xianzhi-location{
+				
+			}
+			/* 闲置样式 */
+			.xianzhi-cell {
+				font-size: 15px;
+				background-color:#FFFFFF;
+				width: 92vw;
+				margin-left: 4vw;
+				border-radius: 20px;
+				box-shadow: 0 0 5px #c3c3c3;
+				margin-bottom: 4vw;
+			}
+			
+			/* 闲置头部样式 */
+			.xianzhi-header{
+				width: 92vw;
+				height: 23vw;
+
+			}
+			.xianzhi-header-img{
+				display: inline-block;
+				width: 20vw;
+				height: 20vw;
+				margin-top: 2vw;
+
+			}
+			.xianzhi-header-body{
+				display: inline-block;
+				width: 68vw;
+				height: 16vw;
+				position: relative;
+			}
+			.xianzhi-header-img-pic {
+				width: 15vw;
+				height: 15vw;
+				border-radius: 10vw;
+				position: relative;
+				top: 2.5vw;
+				left: 2.5vw;
+			}
+			.userName{
+				color: #000000;
+				font-size: 22px;
+				position: relative;
+				top: 7px;
+			}
+			.userName-after{
+				position:relative;
+				top: 2px;
+			}
+			.xianzhi-header-time{
+				display: inline-block;
+				margin-left: 5px;
+				margin-right: 5px;
+			}
+			.xianzhi-header-flags{
+				display: inline-block;
+				background-color: #00D9D9;
+				color: #FFFFFF;
+				padding-left: 5px;
+				padding-right: 5px;
+				border-radius: 20px;
+				font-size: 14px;
+				line-height: 20px;
+			}
+			.xianzhi-header-body-price{
+				position: absolute;
+				top:0px;
+				right: 7px;
+				color: #EB6100;
+			}
+			
+			
+			/* 闲置body样式 */
+			.xianzhi-body{
+				width: 76vw;
+				height: 46vw;
+				position: relative;
+				left: 12vw;
+			}
+			.xianzhi-img{
+				width: 20vw;
+				height: 30vw;
+			}
+			
+			
+			/* 闲置footer样式 */
+			.xianzhi-footer{
+				width: 83vw;
+				height: 10vw;
+				position: relative;
+				left: 6vw;
+				margin-bottom: 2vw;
+			}
+			.xianzhi-location{
+				float: left;
+				
+			}
+			.xianzhi-like{
+				float:right;
+			}
+			.xianzhi-comment{
+				float:right;
+			}
+			.xianzhi-footer-cell{
+				display: inline-block;
+				margin-right: 10px;
+			}
+			.xianzhi-footer-comment-count{
+				position: relative;
+				bottom: 4px;
+				color: #989898;
+			}
+			.xianzhi-footer-location{
+				color: #989898;
+				font-size:13px ;
 			}
 		</style>
 	</head>
@@ -86,79 +225,126 @@
 		<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
 			<div id="scroll" class="mui-scroll">
 				<!--筛选条件的设计-->
-				<div class="mui-input-row mui-search">
-					<input type="search" class="mui-input-clear" placeholder="请输入物品信息">
+				<div class="search-body">
+					<div class="search-container">
+						<div class="input-text">
+							<span class="mui-icon-extra-search2"></span>
+							<span class="search-text-one">请输入物品信息</span> 
+							
+						</div>
+						<div class="search-text">
+							<span>搜索</span>
+						</div>
+					</div>
 				</div>
-				<ul class="mui-table-view" id="bangyoulist">
-					<li class="mui-table-view-cell mui-media" data-id="{{deal_id}}">
-						<div class="mui-media">
-							<img class="mui-media-object mui-pull-left mui-img" src="../image/head7.jpg" onerror="this.src='imgs/lazyload.png'">
-							<div class="mui-media-body">
-								<span class="userName">小乌龟</span>
-								<p class="mui-pull-right xianzhi-price">￥一杯奶茶</p>
-								<p class="xianzhi-desc">《HTML5 APP应用开发实战》毕业了，哪位学弟要的可以联系学长</p>
-							</div>
-						</div>
-						<a href="javascript:;">
-							<img class="xianzhi-img mui-pull-left" src="../image/xianzhi/41.jpg" onerror="this.src='imgs/lazyload.png'">
-							<img class="xianzhi-img mui-pull-left" src="../image/xianzhi/42.jpg" onerror="this.src='imgs/lazyload.png'">
-							<img class="xianzhi-img mui-pull-left" src="../image/xianzhi/43.jpg" onerror="this.src='imgs/lazyload.png'">
-						</a>
-						<p><span class="mui-pull-left">地点:江南大学</span></p>
-					</li>
-					<li class="mui-table-view-cell mui-media" data-id="{{deal_id}}">
-						<div class="mui-media">
-							<img class="mui-media-object mui-pull-left mui-img" src="../image/head2.jpg" onerror="this.src='imgs/lazyload.png'">
-							<div class="mui-media-body">
-								<span class="userName">小灰灰</span>
-								<p class="mui-pull-right xianzhi-price">￥600</p>
-								<p class="xianzhi-desc">去年买的iphone6低价出了</p>
-							</div>
-						</div>
-						<a href="javascript:;">
-							<img class="xianzhi-img mui-pull-left" src="../image/xianzhi/11.jpg" onerror="this.src='imgs/lazyload.png'">
-							<img class="xianzhi-img mui-pull-left" src="../image/xianzhi/12.jpg" onerror="this.src='imgs/lazyload.png'">
-							<img class="xianzhi-img mui-pull-left" src="../image/xianzhi/13.jpg" onerror="this.src='imgs/lazyload.png'">
-							
-						</a>	
-						<p><span class="mui-pull-left">地点:北区桃园</span></p>
-					</li>
-					<li class="mui-table-view-cell mui-media" data-id="{{deal_id}}">
-						<div class="mui-media">
-							<img class="mui-media-object mui-pull-left mui-img" src="../image/head3.jpg" onerror="this.src='imgs/lazyload.png'">
-							<div class="mui-media-body">
-								<span class="userName">小辣椒</span>
-								<p class="mui-pull-right xianzhi-price">￥20</p>
-								<p class="xianzhi-desc">一双皮鞋，很崭新了，需要的私我</p>
-							</div>
-						</div>
-						<a href="javascript:;">
-							<img class="xianzhi-img mui-pull-left" src="../image/xianzhi/21.jpg" onerror="this.src='imgs/lazyload.png'">
-							<img class="xianzhi-img mui-pull-left" src="../image/xianzhi/22.jpg" onerror="this.src='imgs/lazyload.png'">
-							<img class="xianzhi-img mui-pull-left" src="../image/xianzhi/23.jpg" onerror="this.src='imgs/lazyload.png'">
-							
-						</a>	
-						<p><span class="mui-pull-left">地点:北区榴园</span></p>
-					</li>
-					<li class="mui-table-view-cell mui-media" data-id="{{deal_id}}">
-						<div class="mui-media">
-							<img class="mui-media-object mui-pull-left mui-img" src="../image/head6.jpg" onerror="this.src='imgs/lazyload.png'">
-							<div class="mui-media-body">
-								<span class="userName">小脑斧</span>
-								<p class="mui-pull-right xianzhi-price">￥0</p>
-								<p class="xianzhi-desc">工作太忙了，泰迪没法样了，求收养</p>
-							</div>
-						</div>
-						<a href="javascript:;">
-							<img class="xianzhi-img mui-pull-left" src="../image/xianzhi/31.jpg" onerror="this.src='imgs/lazyload.png'">
-							<img class="xianzhi-img mui-pull-left" src="../image/xianzhi/32.jpg" onerror="this.src='imgs/lazyload.png'">
-							<img class="xianzhi-img mui-pull-left" src="../image/xianzhi/33.jpg" onerror="this.src='imgs/lazyload.png'">
-							
-						</a>
-						<p><span class="mui-pull-left">地点:江南大学</span></p>
-					</li>
+				
+				<!-- 容器 -->
+				<div class="xianzhi-container">
 					
-				</ul>
+					<!-- 子体 -->
+					<div class="xianzhi-cell">
+						<div class="xianzhi-header">
+							<div class="xianzhi-header-img">
+								<img class=" xianzhi-header-img-pic" src="../image/head/1.jpg" onerror="this.src='imgs/lazyload.png'">
+							</div>
+							<div class="xianzhi-header-body">
+								<div class="xianzhi-header-body-body">
+									<p class="userName">小白菜</p>
+									<p class="userName-after">
+										<span class="xianzhi-header-time">今天&nbsp;8:35</span>
+										<span class="xianzhi-header-flags">二手书</span>
+									</p>
+								</div>
+								<div class="xianzhi-header-body-price">
+									￥20
+								</div>
+							</div>
+							
+						</div>
+						<span class="mui-icon-extra-dot"></span>
+						<div class="xianzhi-body">
+							<p class="xianzhi-body-text">
+								《HTML5&nbsp;APP应用开发实战》毕业了，哪位学弟要的可以联系学姐。
+							</p>
+							<div class="xianzhi-body-img">
+								<img class="xianzhi-img mui-pull-left" src="../image/xianzhi/61.jpg" onerror="this.src='imgs/lazyload.png'">
+								<img class="xianzhi-img mui-pull-left" src="../image/xianzhi/62.png" onerror="this.src='imgs/lazyload.png'">
+							</div>
+						</div>
+						<div class="xianzhi-footer">
+							<p>
+								<div class="xianzhi-footer-cell xianzhi-location">
+									<span class="mui-icon-extra-location3 mui-pull-left"></span>
+									<span class="xianzhi-footer-location">江南大学</span>
+								</div>
+								<div class="xianzhi-footer-cell xianzhi-like">
+									<span class="mui-icon-extra-like2"></span>
+									<span class="xianzhi-footer-comment-count">65</span>
+								</div>
+								<div class="xianzhi-footer-cell xianzhi-comment">
+									<span class="mui-icon-extra-comment2"></span>
+									<span class="xianzhi-footer-comment-count">295</span>
+									
+								</div>
+								
+							</p>
+							
+						</div>
+					</div>
+					
+					<!-- 子体 -->
+					<div class="xianzhi-cell">
+						<div class="xianzhi-header">
+							<div class="xianzhi-header-img">
+								<img class=" xianzhi-header-img-pic" src="../image/head/2.jpg" onerror="this.src='imgs/lazyload.png'">
+							</div>
+							<div class="xianzhi-header-body">
+								<div class="xianzhi-header-body-body">
+									<p class="userName">Jean</p>
+									<p class="userName-after">
+										<span class="xianzhi-header-time">今天&nbsp;8:35</span>
+										<span class="xianzhi-header-flags">二手书</span>
+									</p>
+								</div>
+								<div class="xianzhi-header-body-price">
+									￥10
+								</div>
+							</div>
+							
+						</div>
+						<span class="mui-icon-extra-dot"></span>
+						<div class="xianzhi-body">
+							<p class="xianzhi-body-text">
+								《HTML5&nbsp;APP应用开发实战》毕业了，哪位学弟要的可以联系学姐。
+							</p>
+							<div class="xianzhi-body-img">
+								<img class="xianzhi-img mui-pull-left" src="../image/xianzhi/61.jpg" onerror="this.src='imgs/lazyload.png'">
+								<img class="xianzhi-img mui-pull-left" src="../image/xianzhi/62.png" onerror="this.src='imgs/lazyload.png'">
+							</div>
+						</div>
+						<div class="xianzhi-footer">
+							<p>
+								<div class="xianzhi-footer-cell xianzhi-location">
+									<span class="mui-icon-extra-location3 mui-pull-left"></span>
+									<span class="xianzhi-footer-location">江南大学</span>
+								</div>
+								<div class="xianzhi-footer-cell xianzhi-like">
+									<span class="mui-icon-extra-like2"></span>
+									<span class="xianzhi-footer-comment-count">65</span>
+								</div>
+								<div class="xianzhi-footer-cell xianzhi-comment">
+									<span class="mui-icon-extra-comment2"></span>
+									<span class="xianzhi-footer-comment-count">295</span>
+									
+								</div>
+								
+							</p>
+							
+						</div>
+					</div>
+					
+				</div>
+
 			</div>
 		</div>
 	/*以下是模板处理*/

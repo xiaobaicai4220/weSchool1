@@ -11,9 +11,13 @@
 		<style>
 			.header-text{
 				display: inline-block;
-				border-bottom: 1vw solid #0386fb;
+				font-size: 20px;
+				color: #EFEFEF;
 			}
-			
+			.selected span{
+				border-bottom: 1vw solid #FFFFFF;
+				color: #FFFFFF;
+			}
 		</style>
 	</head>
 
@@ -21,17 +25,17 @@
 		<div class="mui-bar-header-secondary">
 			<div style="width:60vw;position: absolute;left: 20vw;">
 				<div class="mui-segmented-control mui-segmented-control-inverted">
-					<a class="mui-control-item" data-href="./service/bangyou.html" >
+					<a class="selected mui-control-item" data-href="./service/bangyou.html" >
 						<span class="header-text">帮柚</span>
 					</a>
 					<a class="mui-control-item" data-href="./service/xianzhi.html">
-						闲置
+						<span class="header-text">闲置</span>
 					</a>
 					<a class="mui-control-item" data-href="./service/activity.html">
-						活动
+						<span class="header-text">活动</span>
 					</a>
 					<a class="mui-control-item" data-href="./service/lostAndFound.html">
-						招领
+						<span class="header-text">招领</span>
 					</a>
 				</div>
 			</div>
@@ -73,15 +77,27 @@
 				}
 				self.append(sub);
 			}
+			
+			var activeTab = null;		//保存活动选项卡
+			var beforeTab = null;		//保存前一个选项卡，用于改变样式
+			
+			beforeTab = document.getElementsByClassName("selected")[0];
 			mui(".mui-segmented-control").on("tap", "a", function(e) {
 				var targetTab = this.getAttribute("data-href");
-				if(targetTab == activeTab) {
+				
+				if(targetTab == activeTab){
 					return;
 				};
+				
 				plus.webview.hide(activeTab);
+				self.show();
 				plus.webview.show(targetTab);
-				//更改当前活跃的选项
 				activeTab = targetTab;
+				this.classList.add("selected");
+				beforeTab.classList.remove("selected");
+				beforeTab = this;
+				
+				
 			})
 		});
 	</script>

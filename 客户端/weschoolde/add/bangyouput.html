@@ -12,193 +12,169 @@
 		<link rel="stylesheet" href="../css/mui.picker.css">
 		<link rel="stylesheet" href="../css/mui.poppicker.css">
 		<style>
-			.add-son-body {
-				width: 90vw;
+			*{
+				padding: 0px;
+				margin: 0px;
+			}
+			body{
+				background-color:#E5E5E5 ;
+			}
+			.mui-nav {
+				background-color: #00D9D9;
+				height: 53px;
+			}
+			.mui-bar-footer{
+				background-color: #535353;
+				height: 44px;
+			}
+			.mui-icon-extra-ellipse{
 				position: relative;
-				left: 5vw;
-				top: 53px;
-				/*border: 1px solid #000000;*/
+				left: 10vw;
+			}
+			.footer-money{
+				display: inline-block;
+				position: absolute;
+				right: 30vw;
+				line-height: 44px;
+				color: #FFFFFF;
+				font-size: 16px;
+				margin-right: 7px;
+			}
+			.footer-money-first{
+				font-size: 20px;
+			}
+			.footer-put{
+				display: inline-block;
+				width: 30vw;
+				height: 44px;
+				position: absolute;
+				right: 0px;
+				background-color: #00D9D9;
+				color: #FFFFFF;
+				font-size: 18px;
+				text-align: center;
+				line-height: 44px;
 			}
 			
-			.add-son-body-takePart {
+			/* 主体样式 */
+			.mui-content{
+				position: absolute;
+				top: 53px;
+				background-color: #E5E5E5;
+			}
+			
+			/* 收货地址样式 */
+			.address{
+				width: 100vw;
+				height: 18vh;
+				background: #FFFFFF;
+				margin-bottom: 7px;
+			}
+			/* 图标 */
+			.mui-icon-extra-location4 {
+				display:inline-block;
+				width: 4vh;
+				height: 4vh;
+				background-size: 4vh 4vh;
+				background-image: url("../image/svg/location4.svg");
+				position: absolute;
+				left: 4vw;
+				top: 9vh;
+				margin-top: -2vh;
+			}
+			.mui-icon-extra-right3 {
+				display:inline-block;
+				width: 20px;
+				height: 20px;
+				background-size: 20px 20px;
+				background-image: url("../image/svg/right3.svg");
+			}
+			.address-icon{
+				position: absolute;
+				right: 4vw;
+				top: 9vh;
+				margin-top: -2vh;
+			}
+			
+			.address-body{
+				width: 72vw;
+				height: 16vh;
+				position: absolute;
+				left: 14vw;
+				top: 2.5vh;
+			}
+			.address-body-first{
+				height: 4vh;
+				width: 72vw;
+				line-height: 4vh;
+				margin-top: 1vh;
+			}
+			.phone{
+				float: right;
+			}
+			.address-body-last{
+				height:6vh;
+				width: 72vw;
+				margin-top: 2vh;
+				line-height: 3vh;
+			}
+			.user-address{
+				color: #999999;
+				font-size: 14px;
+			}
+			
+			
+			/* detail样式 */
+			.detail{
+				height: 40vh;
+				width:100vw;
+			}
+			.detail-cell{
+				height: 8vh;
+				width: 100vw;
+				border-bottom: 1px solid #E5E5E5;
+				background-color:#FFFFFF ;
+				line-height: 8vh;
+			}
+			.detail-cell-text{
+				position: relative;
+				left: 8vw;
+			}
+			.detail-cell-content{
+				float: right;
+				position: relative;
+				right: 14vw;
+				color: #D2D2D2;
+				font-size: 14px;
+			}
+			.detail-cell .mui-icon-extra-right3{
+				position: absolute;
+				right: 7vw;
+				margin-top: 2vh;
+			}
+			.detail-selected{
+				color: #000000;
+			}
+			
+			/* news样式 */
+			.news{
+				margin-top: 7px;
+				height: 22vh;
+				width: 100vw;
+				background-color:#FFFFFF ;
+				
+			}
+			.add-son-body-takePart{
 				display: block;
 				width: 90vw;
 				position: relative;
 				top: 20px;
-				/*border: 1px solid #000000;*/
+				left: 5vw;
+			}
+			textarea{
+				background-color:#EEEEEE ;
 			}
 			
-			.label-body {
-				display: inline-block;
-				width: 25vw;
-				/*border: 1px solid #2AC845;*/
-				height: 125vw;
-			}
-			
-			.input-body {
-				display: inline-block;
-				width: 63vw;
-				/*border: 1px solid #0062CC;*/
-				height: 125vw;
-			}
-			
-			ul {
-				list-style: none;
-				margin: 0px;
-			}
-			
-			.label-body li {
-				float: left;
-				position: relative;
-				left: -40px;
-				font-size: 14px;
-				/*border: 1px solid #000000;*/
-				height: 40px;
-			}
-			
-			.input-body li {
-				float: left;
-				position: relative;
-				left: -40px;
-				font-size: 14px;
-				/*border: 1px solid #000000;*/
-				height: 40px;
-			}
-			
-			li:nth-child(5) .select-body {
-				width: 49%;
-			}
-			
-			li:nth-child(5) .select-body .select-body-cell {
-				width: 100%;
-			}
-			
-			li:nth-child(6) {
-				height: 100px;
-			}
-			
-			li:nth-child(7) {
-				height: 50px;
-			}
-			
-			.label-body ul li {
-				width: 25vw;
-			}
-			
-			.input-body ul li {
-				width: 63vw;
-			}
-			
-			li label {
-				position: relative;
-				top: 12px;
-			}
-			
-			input[type="text"] {
-				position: relative;
-				top: 5px;
-				font-size: 14px;
-				height: 30px;
-			}
-			
-			.select-body {
-				height: 35px;
-				width: 100%;
-				/*border: 1px solid #d0d0d0;*/
-				background-color: #d9d9d9;
-				border-radius: 5px;
-			}
-			
-			.select-body-cell {
-				display: inline-block;
-				width: 49%;
-				height: 35px;
-				/*border: 1px solid #000000;*/
-				padding: 10px;
-				text-align: center;
-				margin-top: -1px;
-			}
-			
-			.select-body .selected {
-				border-radius: 5px;
-				border: 1px solid #d0d0d0;
-				background-color: #00D5F7;
-				color: #FFFFFF;
-			}
-			
-			.user-location {
-				position: relative;
-				top: 5px;
-				font-size: 14px;
-				height: 34px;
-				background-color: #FFFFFF;
-				height: 120px;
-			}
-			
-			.user-location div {
-				height: 120px;
-				width: 75%;
-				position: absolute;
-				top: 0px;
-				left: 29px;
-			}
-			
-			.user-location div p:nth-child(1) {
-				color: #000000;
-			}
-			
-			.user-location div p:nth-child(2) {
-				color: #676767;
-			}
-			
-			.user-location .mui-icon-extra {
-				position: relative;
-				top: 40px;
-			}
-			
-			.confirm {
-				position: relative;
-				top: 10px;
-				display: block;
-				width: 100%;
-				height: 40px;
-				border-radius: 5px;
-				background-color: #00D5F7;
-				text-align: center;
-			}
-			
-			.mui-bar {
-				background-color: #00D5F7;
-				height: 53px;
-			}
-			/*		.select-body span[data-value="other"]{
-				border-radius: 5px;
-				border: 1px solid #d0d0d0;
-				background-color: #00D5F7;
-				color: #FFFFFF;
-			}*/
-			
-			.ws-poppicker {
-				height: 230px;
-				background-color: #FFFFFF;
-			}
-			
-			.bangyou-address {
-				height: 60px;
-				background-color: #FFFFFF;
-				border-bottom: 1px solid #d2d2d2;
-			}
-			
-			.bangyou-address span:nth-child(1) {
-				color: #000000;
-			}
-			
-			.ws-poppicker-nav {
-				position: fixed;
-				left: 50%;
-				bottom: 5px;
-				margin-left: -60px;
-			}
 		</style>
 	</head>
 
@@ -209,126 +185,61 @@
 				<span class="mui-icon mui-icon-extra mui-icon-extra-left"></span>
 				<span class="mui-header-text">返回</span>
 			</div>
+			<div class="userInfo-header-right">
+				<span class="mui-icon mui-icon-extra mui-icon-extra-ellipse"></span>
+			</div>
 		</header>
+		<footer class="mui-bar mui-bar-footer">
+			<p class="footer-money">合计:￥<span class="footer-money-first">3</span>.00</p>
+			<span class="footer-put">发布</span>
+		</footer>
 		<div class="mui-content">
-			<div class="add-son-body">
+			<div class="address">
+				<span class="mui-icon-extra-location4"></span>
+				<div class="address-body">
+					<div class="address-body-first">
+						<span class="username">收货人:小白菜</span>
+						<span class="phone">18861855098</span>
+					</div>
+					<div class="address-body-last">
+						<span class="user-address">收货地址:江苏省无锡市蠡湖大道1800号江南大学桃园公寓20号楼410寝室</span>
+					</div>
+				</div>
+				<span class="mui-icon-extra-right3 address-icon"></span>
+			</div>
+			<div class="detail">
+				<div class="detail-cell">
+					<span class="detail-cell-text">取件码</span>
+					<span class="detail-cell-content">限一个,多发无效</span>
+				</div>
+				<div class="detail-cell">
+					<span class="detail-cell-text">取件点</span> 
+					<span class="detail-cell-content detail-selected">小东门</span>
+					<span class="mui-icon-extra-right3"></span>
+				</div>
+				<div class="detail-cell">
+					<span class="detail-cell-text">送达时间</span> 
+					<span class="detail-cell-content detail-selected">3月20日|12:00~13:00</span>
+					<span class="mui-icon-extra-right3"></span>
+				</div>
+				<div class="detail-cell">
+					<span class="detail-cell-text">使用积分</span> 
+					<span class="detail-cell-content">暂无积分</span>
+					<span class="mui-icon-extra-right3"></span>
+				</div>
+				<div class="detail-cell">
+					<span class="detail-cell-text">备注</span> 
+					<span class="detail-cell-content">具体要求</span>
+					<span class="mui-icon-extra-right3"></span>
+				</div>
+			</div>
+			<div class="news">
 				<div class="add-son-body-takePart">
 					<textarea id="codeBefore" rows='3' placeholder="此处粘贴取件短信，自动填写取件码(多个取件码请分开发单)"></textarea>
 				</div>
-				<div class="label-body">
-					<ul>
-						<li>
-							<label>取件码:</label>
-						</li>
-						<li>
-							<label>取件点:</label>
-						</li>
-						<li>
-							<label>送达时间:</label>
-						</li>
-						<li>
-							<label>使用积分:</label>
-						</li>
-						<li>
-							<label>官方配送:</label>
-						</li>
-						<li>
-							<label>备注:</label>
-						</li>
-						<li>
-							<label>地址:</label>
-						</li>
-					</ul>
-				</div>
-				<div class="input-body">
-					<ul>
-						<li>
-							<input id="code" type="text" placeholder="取件码(限一个取件码,多发无效)"></input>
-						</li>
-						<li>
-							<div class="select-body">
-								<span data-value="eastGate" class="select-body-cell selected">
-											小东门
-							</span>
-								<span data-value="other" class="select-body-cell">
-											其他
-							</span>
-							</div>
-						</li>
-						<li>
-							<div class="select-body">
-								<span data-value="today" class="select-body-cell selected">
-											今日
-							</span>
-								<span data-value="special" class="select-body-cell">
-											特殊
-							</span>
-							</div>
-						</li>
-						<li>
-							<div class="select-body">
-								<span data-value="twenty" class="select-body-cell selected">
-											20积分
-							</span>
-								<span data-value="custom" class="select-body-cell">
-											自定义
-							</span>
-							</div>
-						</li>
-						<li>
-							<div class="select-body">
-								<span data-value="isOfficial" class="select-body-cell">
-											仅官方配送
-								</span>
-							</div>
-						</li>
-						<li>
-							<textarea id="remarks" class "" rows='3' placeholder="还有不放心的地方，那就交代一下吧" maxlength="40"></textarea>
-						</li>
-						<li>
-							<div class="user-location">
-								<span class="mui-icon-extra mui-icon-extra-location "></span>
-
-								<div id="userAddressA">
-								</div>
-
-								<span class="mui-icon-extra mui-icon-extra-right1 mui-pull-right"></span>
-							</div>
-						</li>
-					</ul>
-				</div>
-				<input type="radio" checked>
-				<span style="color: #d23456;">《weschool平台代取业务服务条款》</span>
-				</input>
-
-				<button type="button" class="confirm mui-button " style="color: #FFFFFF; font-size: 15px;" data-loading-icon-position="right" data-loading-text="请稍后...">发布</button>
-
-					<div style="height: 100px;">
-					</div>
-			</div>
-
-		</div>
-		<div class="ws-poppicker ws-poppicker-hide">
-			<div class="ws-poppicker-head">
-				<span class="ws-poppicker-head-left">
-					取消
-				</span>
-				<span class="ws-poppicker-head-title">
-					我的收货地址
-				</span>
-			</div>
-			<div class="ws-poppicker-content">
-				<div class="bangyou-address" data-id="5b640babeac1e92aa033849f">
-					<p><span>朱泽聪 </span><span>18861855098</span></p>
-					<p><span>北区,宿舍楼,桂圆 </span><span>哈哈</span></p>
-				</div>
-			</div>
-			<div class="ws-poppicker-nav">
-				<span class=" mui-icon-extra mui-icon-extra-add2"></span>
-				<span style="position: relative;bottom: 5px">新增收货地址</span>
 			</div>
 		</div>
-
+		
 	</body>
 
 	<script src="../js/mui.min.js"></script>
@@ -340,428 +251,6 @@
 		mui.init({});
 		mui.plusReady(function() {
 
-			var bangyouInfo = {}; //用于上传的订单信息
-			ws.func.extend(bangyouInfo, ws.dataType.bangyou.release);
-			var userJifen = null; //保存从服务器获取的订单信息
-
-			/** 初始化 **/
-			//地址页初始化
-			addressInit();
-			queryJifen();
-			
-			//alert(JSON.stringify(bangyouInfo));
-			/**事件监听**/
-			var bangyouReleasePages = {
-				codeBefore: document.getElementById("codeBefore"),
-				code: document.getElementById("code"),
-
-			}
-			var brp = bangyouReleasePages;
-
-			//监听返回按钮
-			var backbtn = document.getElementsByClassName("userInfo-header-left")[0];
-			backbtn.addEventListener('tap',function(){
-				mui.back()
-			});
-
-			//监听粘贴验证码区域
-			brp.codeBefore.onchange = function() {
-				var reg = /\d{6,6}/;
-				var value = reg.exec(brp.codeBefore.value);
-				if(value) {
-					code.value = value.toString();
-					return;
-				} else {
-					plus.nativeUI.toast("未识别出取件码", {
-						verticalAlign: 'center'
-					})
-				}
-			}
-
-			//监听选择框点击事件
-			mui(".select-body").on("tap", 'span', function(e) {
-				var target = this.getAttribute("data-value");
-				if(target == 'eastGate') {
-					this.classList.add('selected');
-					document.querySelector(".select-body span[data-value='other']").classList.remove('selected');
-					return;
-				}
-				if(target == 'other') {
-					//选择其他取件点
-
-					selectOther()
-					//this.classList.add('selected');
-					//document.querySelector(".select-body span[data-value='eastGate']").classList.remove('selected');
-					return;
-				}
-				if(target == 'today') {
-					this.classList.add('selected');
-					document.querySelector(".select-body span[data-value='special']").classList.remove('selected');
-					return;
-				}
-				if(target == 'special') {
-					selectTime();
-					//this.classList.add('selected');
-					//document.querySelector(".select-body span[data-value='today']").classList.remove('selected');
-					return;
-				}
-				if(target == 'twenty') {
-					this.classList.add('selected');
-					document.querySelector(".select-body span[data-value='custom']").classList.remove('selected');
-					return;
-				}
-				if(target == 'custom') {
-					selectJifen();
-					//this.classList.add('selected');
-					//document.querySelector(".select-body span[data-value='twenty']").classList.remove('selected');
-					return;
-				}
-				if(target == 'isOfficial') {
-					if(bangyouInfo.isOfficial) {
-						this.classList.remove('selected');
-						bangyouInfo.isOfficial = false;
-					} else {
-						this.classList.add('selected');
-						bangyouInfo.isOfficial = true;
-					}
-				}
-			})
-
-			//监听地址框点击事件
-			var userAddress = document.querySelector(".user-location");
-			userAddress.addEventListener("tap", function() {
-				addressShow();
-				//plus.nativeUI.toast("点击了地址");
-			})
-
-			/* 监听地址页事件 */
-			//监听新增地址按钮
-			document.querySelector(".ws-poppicker-nav").addEventListener("tap", function() {
-				plus.nativeUI.toast("点击了新增收货地址");
-				var add_address_html = mui.preload({
-					url: 'addAddress.html',
-					id: 'addAddress.html',
-					styles: {
-						bottom: '0px'
-					}
-				})
-				add_address_html.show('slide-in-right', 300);
-			})
-
-			//监听地址页中的选项
-			mui(".ws-poppicker-content").on("tap", "div", function(e) {
-				var id = this.getAttribute("data-id");
-				var address = ws.key.getValue(id);
-				updateAddress(address);
-				plus.nativeUI.toast("点击了地址页");
-				addressHide();
-			})
-
-			//监听发布按钮
-			var confirm = document.getElementsByClassName("confirm")[0];
-			confirm.addEventListener("tap", function() {
-				//将按钮置等待
-				mui(this).button('loading');
-				
-				//获取值
-				bangyouInfo.code = code.value;
-				bangyouInfo.remarks = document.getElementById("remarks").value;
-
-				//值检验
-				if(!bangyouInfo.code) {
-					plus.nativeUI.toast("取件码不能为空", {
-						verticalAlign: 'center'
-					});
-					mui(this).button('reset');
-					return;
-				}
-				if(!bangyouInfo.addressId) {
-					plus.nativeUI.toast("地址不能为空", {
-						verticalAlign: 'center'
-					});
-					mui(this).button('reset');
-					return;
-				}
-				if(parseInt(bangyouInfo.jifen) > parseInt(userJifen)) {
-					var str = '当前已有积分' + userJifen;
-					mui.alert(str, '无可用积分', function() {
-						return;
-					})
-					mui(this).button('reset');
-					return;
-				}
-				//发送请求
-				//alert(JSON.stringify(bangyouInfo));
-				plus.nativeUI.toast('点击了发布按钮');
-				mui.ajax(ws.ws_url.bangyou.put,{
-					type: "POST",
-					headers: {
-						'Content-Type': 'application/json;charset=utf-8'
-					},
-					data: JSON.stringify({
-						'token': ws.token.getUserToken(),
-						'putUserName':ws.data.userInfo.getUserInfo().name,
-						'putUserHeaderImgUrl':ws.data.userInfo.getUserInfo().userHeaderImgUrl,
-						'bangyouInfo':bangyouInfo
-					}),
-					success: function(data) {
-						if(data.type == 0) {
-							//通知主界面刷新.
-							plus.nativeUI.toast("成功发布帮柚订单",{verticalAlign:'center'});
-							mui(confirm).button('reset');
-							return;
-						}
-						console.log("发布失败,请稍后再试");
-						return;
-					},
-					err: function(xhr, type, errorThrown) {
-						异常处理
-						alert(type);
-					}
-				})
-
-			})
-
-			/** 地址页相关逻辑 **/
-
-			//地址页初始化逻辑
-			function addressInit() {
-				var list = {};
-				//获取地址数据
-				mui.ajax(ws.ws_url.address.get, {
-					type: "POST",
-					headers: {
-						'Content-Type': 'application/json;charset=utf-8'
-					},
-					data: JSON.stringify({
-						'token': ws.token.getUserToken()
-					}),
-					success: function(data) {
-						//测试，直接写验证码.
-						if(data.type == 0) {
-							list = data.list;
-							//地址表模板
-							var tmpl = '<div class="bangyou-address" data-id="{{id}}"><p><span>{{Aname}} </span><span>{{Aphone}}</span></p><p><span>{{Aaddress}} </span><span>{{AaddressDetail}}</span></p></div>';
-							var innerH = " ";
-							for(var i of Object.keys(list)) {
-								//本地存储值键对
-								ws.key.setValue(list[i]._id, list[i]);
-								//构建地址
-								var a = tmpl.replace('{{id}}', list[i]._id);
-								a = a.replace('{{Aname}}', list[i].Aname);
-								a = a.replace('{{Aphone}}', list[i].Aphone);
-								a = a.replace('{{Aaddress}}', list[i].Aaddress);
-								a = a.replace('{{AaddressDetail}}', list[i].AaddressDetail);
-								if(list[i].isDefault) {
-									updateAddress(list[i]); //将主页面的地址项设置为该地址
-								}
-								innerH = innerH + a;
-							}
-							var container = document.getElementsByClassName("ws-poppicker-content")[0];
-							container.innerHTML = innerH;
-							console.log(innerH);
-						} else if(data.type == 1) {
-							plus.nativeUI.toast('无地址记录');
-							console.log('无地址记录');
-						} else {
-							plus.nativeUI.toast('err');
-							console.log('err');
-						}
-					},
-					err: function(xhr, type, errorThrown) {
-						异常处理
-						alert(type);
-					}
-				})
-
-			}
-
-			//新增地址
-
-			//地址页显示逻辑
-			var mask = document.createElement("div");
-			mask.classList.add("ws-poppicker-mask");
-			mask.addEventListener("tap", addressHide);
-			var body = document.getElementsByTagName("body")[0];
-			var popicker = document.querySelector(".ws-poppicker");
-
-			function addressShow() {
-				body.insertBefore(mask, popicker);
-				popicker.classList.remove("ws-poppicker-hide");
-				popicker.classList.add("ws-poppicker-show");
-			}
-
-			function addressHide() {
-				body.removeChild(mask);
-				popicker.classList.remove("ws-poppicker-show");
-				popicker.classList.add("ws-poppicker-hide");
-			}
-
-			function selectOther() {
-				var Picker = new mui.PopPicker({
-					layer: 1
-				});
-				Picker.setData(bangyouReleaseData.location);
-				Picker.show(function(items) {
-					//userInfoPages.major.value = items[0].text;
-					bangyouInfo.location = items[0].text;
-
-					var other = document.querySelector(".select-body span[data-value='other']")
-					other.classList.add('selected');
-					other.innerText = items[0].text;
-					document.querySelector(".select-body span[data-value='eastGate']").classList.remove('selected');
-				})
-			}
-
-			function selectTime() {
-				plus.nativeUI.toast("请选择送达时间起始时间", {
-					verticalAlign: 'center'
-				});
-				var Picker = new mui.PopPicker({
-					layer: 2
-				});
-				Picker.setData(bangyouReleaseData.time);
-				Picker.show(function(items) {
-					//userInfoPages.major.value = items[0].text;
-					bangyouInfo.time = items[0].text + items[1].text
-
-					plus.nativeUI.toast("请选择送达时间结束时间", {
-						verticalAlign: 'center'
-					})
-					var Picker = new mui.PopPicker({
-						layer: 2
-					});
-					Picker.setData(bangyouReleaseData.time1);
-					Picker.show(function(items) {
-						//userInfoPages.major.value = items[0].text;
-						bangyouInfo.time = bangyouInfo.time + items[0].text + items[1].text;
-						plus.nativeUI.toast("请选择送达时间结束时间", {
-							verticalAlign: 'center'
-						})
-
-						var special = document.querySelector(".select-body span[data-value='special']")
-						special.classList.add('selected');
-						special.innerText = bangyouInfo.time;
-						document.querySelector(".select-body span[data-value='today']").classList.remove('selected');
-					})
-
-				})
-			}
-
-			function selectJifen() {
-				var Picker = new mui.PopPicker({
-					layer: 1
-				});
-				Picker.setData(bangyouReleaseData.jifen);
-				Picker.show(function(items) {
-					//userInfoPages.major.value = items[0].text;
-					bangyouInfo.jifen = items[0].text;
-
-					var other = document.querySelector(".select-body span[data-value='custom']")
-					other.classList.add('selected');
-					other.innerText = items[0].text + "积分";
-					document.querySelector(".select-body span[data-value='twenty']").classList.remove('selected');
-				})
-			}
-
-			//修改主页面地址页 输入address数据
-			function updateAddress(address) {
-				var tmpl = '<p><span>收货人:{{Aname}}</span></p><p><span>联系电话:{{Aphone}}</span></p><p><span>收货地址:{{AaddressD}}</span></p>'
-				bangyouInfo.addressId = address._id;
-				tmpl = tmpl.replace("{{Aname}}", address.Aname);
-				tmpl = tmpl.replace("{{Aphone}}", address.Aphone);
-				tmpl = tmpl.replace("{{AaddressD}}", address.Aaddress + address.AaddressDetail)
-				var add = document.getElementById("userAddressA");
-				add.innerHTML = tmpl;
-				bangyouInfo.address = address.Aaddress;
-			}
-
-			//发送发布订单请求
-			function release(bangyouInfo) {
-				mui.ajax(ws.ws_url.bangyou.release, {
-					type: "POST",
-					headers: {
-						'Content-Type': 'application/json;charset=utf-8'
-					},
-					data: JSON.stringify({
-						'token': ws.token.getUserToken()
-					}),
-					success: function(data) {
-						if(data.type == 0) {
-							//通知主界面刷新.
-							console.log("发布成功")
-						} else {
-							console.log("发布失败")
-
-						}
-					},
-					err: function(xhr, type, errorThrown) {
-						异常处理
-						alert(type);
-					}
-				})
-			}
-
-			//测试
-			function createJifen() {
-				mui.ajax(ws.ws_url.jifen.create, {
-					type: "POST",
-					headers: {
-						'Content-Type': 'application/json;charset=utf-8'
-					},
-					data: JSON.stringify({
-						'token': ws.token.getUserToken(),
-						'pass': '123456'
-					}),
-					success: function(data) {
-						if(data.type == 0) {
-							//通知主界面刷新.
-							console.log("创建积分账号成功");
-							return;
-						}
-						if(data.type == 1) {
-							console.log("不能创建重复积分账号");
-							return;
-						}
-						console.log("创建失败");
-						return;
-					},
-					err: function(xhr, type, errorThrown) {
-						异常处理
-						alert(type);
-					}
-				})
-			}
-
-			//查询积分
-			function queryJifen() {
-				mui.ajax(ws.ws_url.jifen.query, {
-					type: "POST",
-					headers: {
-						'Content-Type': 'application/json;charset=utf-8'
-					},
-					data: JSON.stringify({
-						'token': ws.token.getUserToken()
-					}),
-					success: function(data) {
-						if(data.type == 0) {
-							//通知主界面刷新.
-							console.log("查询成功");
-							console.log("积分" + data.jifen);
-							console.log(JSON.stringify(data));
-							//设置积分
-							userJifen = data.jifen;
-							return;
-						}
-						console.log("查询失败");
-						return;
-					},
-					err: function(xhr, type, errorThrown) {
-						异常处理
-						alert(type);
-					}
-				})
-			}
 
 		})
 	</script>

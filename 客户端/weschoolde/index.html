@@ -2,51 +2,270 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>入口页面</title>
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="./css/mui.min.css" rel="stylesheet" />
+		<link href="./css/mui-icon-extra.css" rel="stylesheet" />
+		<link href="./css/icon.css" rel="stylesheet" />
+		<link href="./css/wsPopPicker" rel="stylesheet" />
+		<style>
+			.ws-main-body{
+				width: 100vw;
+				height: 100vh;
+				background: #CCCCCC;
+			}
+			.ws-bottom-bar{
+				position: absolute;
+				bottom: 0px;
+				background: #f3f3f3;
+				height: 58px;
+				width: 100vw;
+				border-top: 1px solid rgba(255,255,255,0);
+				border: 0px;
+				box-shadow: -2px 0px 2px #000000;
+			}
+			#ws-main-add{
+				position: absolute;
+				width: 30px;
+				height: 30px;
+				background-size: 30px 30px;
+				margin: 7.5px;
+				padding: 0px;
+				padding-top:1px ;
+				border: 0px;
+			}
+			#add{
+				position: absolute;
+				width:45px;
+				height: 45px;
+				bottom:2.5px;
+				left: 50vw;
+				margin-left: -22.5px;
+				background-color:#00D9d9 ;
+				border-radius: 22.5px;
+				box-shadow:2px 2px 3px #CCCCCC; 
+				border: 0px;
+			}
+			.ws-bar-cell{
+				display: inline-block;
+				position: absolute;
+				width: 15vw;
+				top: 8px;
+				border: 0px;
+			}
+			.ws-bar-cell-icon{
+				margin-left:3.75vw;
+				margin-bottom: 0px;
+			}
+			.ws-bar-cell-text{
+				display: block;
+				margin-top: 0px;
+				font-size:10px ;
+				text-align: center;
+				color: #2c2c2c;
+				position: relative;
+				right: 1px;
+			}
+			.mui-icon-extra-home{
+				background-image: url("./image/svg/service1.svg");
+			}
+			.mui-icon-extra-find{
+				background-image: url("./image/svg/find2.svg");
+			}
+			.mui-icon-extra-comment{
+				background-image: url("./image/svg/news1.svg");
+			}
+			.mui-icon-extra-user{
+				background-image: url("./image/svg/user2.svg");
+			}
+			
+			
+			.currentid .mui-icon-extra-home{
+				background-image: url("./image/svg/service3fill.svg");
+			}
+			.currentid .mui-icon-extra-find{
+				background-image: url("./image/svg/find1fill.svg");
+			}
+			.currentid .mui-icon-extra-comment{
+				background-image: url("./image/svg/news1fill.svg");
+			}
+			.currentid .mui-icon-extra-user{
+				background-image: url("./image/svg/user2fill.svg");
+			}
+			
+			.currentid .ws-bar-cell-text{
+				color: #00D9D9;
+			}
+			.mui-icon{
+				position: relative;
+				top: 4px;
+			}
+			.mui-icon-extra-add{
+				position: relative;
+				top: 0px;
+			}
+		</style>
 	</head>
 	<body>
-		<script type="text/javascript" src="js/mui.min.js" ></script>
-		<script type="text/javascript" src="js/ws.js"></script>
-		<script>
-			
-			mui.init({
-				preloadPages:[{
-					url:"login.html",
-					id:"login.html"
-				}]
-			});
-			document.addEventListener("plusready",function(){
-				//读取向导页阅读状态
-				ws.token.removeUserToken();
-				//ws.token.setUserToken("a");
-				
-				var launchFlag=plus.storage.getItem("launchFlag");
-				var launchFlag = false;
-				if(launchFlag){
-					if(ws.token.getUserToken()){
-						//打开首页
-						mui.openWindow({
-							url:"main.html",
-							id:"main.html"
-						});
-					}else{
-						mui.openWindow({
-							url:"login.html",
-							id:"login.html"
-						});
-					}
-					//var self = plus.webview.currentWebview();
-					//self.close();
-				}
-				else{
-				   //打开向导页
-				   mui.openWindow({
-				   	  url:"guide.html",
-				   	  id:"guide.html"
-				   })
-				}
-				
-			});
-		</script>
+		<div class="ws-main-body">
+			<div class="ws-bottom-bar mui-bar mui-bar-tab"> 
+				<a id="service" data-href="service.html" class="ws-bar-cell currentid" style="left: 5vw;">
+					<span class="mui-icon mui-icon-extra mui-icon-extra-home ws-bar-cell-icon"></span>
+					<span class="ws-bar-cell-text">服务</span>
+				</a>
+				<a id="find" data-href="find.html" class="ws-bar-cell" style="left: 22.5vw;">
+					<span class="mui-icon mui-icon-extra mui-icon-extra-find ws-bar-cell-icon"></span>
+					<span class="ws-bar-cell-text">发现</span>
+				</a>
+				<a  id="add" data-href="add" class="ws-bar-cell">
+					<span class="mui-icon mui-icon-extra mui-icon-extra-add ws-bar-cell-icon" id="ws-main-add">
+					</span>
+				</a>
+				<a id="comment" data-href="comment.html" class="ws-bar-cell" style="right: 22.5vw;">
+					<span class="mui-icon mui-icon-extra mui-icon-extra-comment ws-bar-cell-icon"></span>
+					<span class="ws-bar-cell-text">消息</span>
+				</a>
+				<a id="user" data-href="user.html" class="ws-bar-cell" style="right: 5vw;">
+					<span class="mui-icon mui-icon-extra mui-icon-extra-user ws-bar-cell-icon"></span>
+					<span class="ws-bar-cell-text">我</span>
+				</a>
+			</div>
+		</div>	
+	
 	</body>
+	
+	
+	
+	<script src="js/ws.js"></script>
+	<script src="js/mui.min.js"></script>
+	<script src="js/main.js"></script>
+	<script>
+		mui.init({
+			preloadPages:[{
+				url:"service.html",
+				id:"service.html"
+			},{
+				url:"find.html",
+				id:"find.html"
+			},{
+				url:"comment.html",
+				id:"comment.html"
+			},{
+				url:"user.html",
+				id:"user.html"
+			}],
+			preloadLimit:8
+		});
+		document.addEventListener('plusready',function(){
+			var user_html = null;
+			
+			/**测试**/
+			var add_html = mui.preload({
+				url:'add.html',
+				id:'add.html',
+				styles:{
+					height:'30%',
+					bottom:'0px'                                                                           
+				}
+			})
+			
+			
+			/* 子页面 */
+			var subpages = ["service.html","find.html","comment.html","user.html"];
+			var subpage_style = {
+				top:"0px",
+				bottom:"53px"
+			};
+			var self = plus.webview.currentWebview();
+			var activeTab = null;		//保存活动选项卡
+			var beforeTab = null;		//保存前一个选项卡，用于改变样式
+			for(var i = 0;i<4;i++){
+				var sub = plus.webview.create(subpages[i],subpages[i],subpage_style);
+				if(i>0){
+					sub.hide();
+				}else{
+					activeTab = subpages[i];
+					
+				}
+				self.append(sub);
+			}
+			
+			tabFlags = true;  //flags用于标记当前页面
+			beforeTab = document.getElementsByClassName("currentid")[0];
+			mui(".ws-bottom-bar").on("tap","a",function(e){
+				var targetTab = this.getAttribute("data-href");
+				if(targetTab == "add"){
+					//plus.nativeUI.toast('add');
+					addFunc()
+					return;
+				}
+				if(targetTab == activeTab){
+					return;
+				};
+				if(targetTab == "service.html"){
+					tabFlags = true;
+				}else{
+					tabFlags = false;
+				} 
+				
+				plus.webview.hide(activeTab);
+				self.show();
+				plus.webview.show(targetTab);
+				activeTab = targetTab;
+				this.classList.add("currentid");
+				beforeTab.classList.remove("currentid");
+				beforeTab = this;
+				//更改当前活跃的选项
+				
+			})
+			
+			//数据初始化
+			//main.func.init();
+			//获取user.html页面数据
+			if(ws.flags.download.userInfo){
+				mui.ajax(ws.ws_url.userInfo.getUserInfo, {
+					type: "POST",
+					headers: {
+						'Content-Type': 'application/json;charset=utf-8'
+					},
+					data: JSON.stringify({token:ws.token.getUserToken()}),
+					success: function(data) {
+						if(data.type == '0'){
+							ws.dataType.userInfo.backgroundImgUrl = data.userInfo.backgroundImgUrl;
+							ws.dataType.userInfo.userHeaderImgUrl = data.userInfo.userHeaderImgUrl;
+							ws.dataType.userInfo.userSignature = data.userInfo.userSignature;
+							ws.dataType.userInfo.name = data.userInfo.name;
+							ws.dataType.userInfo.sex = data.userInfo.sex;
+							ws.dataType.userInfo.birth = data.userInfo.birth;
+							ws.dataType.userInfo.school = data.userInfo.school;
+							ws.dataType.userInfo.institute = data.userInfo.institute;
+							ws.dataType.userInfo.major = data.userInfo.major;
+							ws.dataType.userInfo.grade = data.userInfo.grade;
+							ws.dataType.userInfo.hometown = data.userInfo.hometown;
+							ws.data.userInfo.setUserInfo();
+							console.log("fire");
+							console.log(JSON.stringify(ws.data.userInfo.getUserInfo()));
+							mui.fire(user_html, 'init', {});
+						}
+					},
+					err: function(xhr, type, errorThrown) {
+						//异常处理；
+						alert(type);
+					}
+				});
+			}
+			
+			/** main.html页面相关函数 **/
+			function addFunc(){
+				
+				//通知页面初始化
+				mui.fire(add_html, 'init', {
+					tabFlags:tabFlags,
+				});
+				//100ms后显示页面
+				add_html.show('slide-in-bottom',300);
+			}
+			
+		});
+	</script>
 </html>

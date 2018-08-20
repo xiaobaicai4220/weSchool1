@@ -125,6 +125,73 @@
 				}
 			}
 			
+			.totop1 {
+				-webkit-animation-duration: 0.6s;
+				-webkit-animation-play-state: paused;
+				-webkit-animation-fill-mode: both;
+				-webkit-animation-name: bounceToTop;
+				-webkit-animation-play-state: running;
+				-webkit-animation-delay: 0.4s;
+				display: inline-block;
+			}
+			
+			.totop2 {
+				-webkit-animation-duration: 0.6s;
+				-webkit-animation-play-state: paused;
+				-webkit-animation-fill-mode: both;
+				-webkit-animation-name: bounceToTop;
+				-webkit-animation-play-state: running;
+				-webkit-animation-delay: 0.6s;
+				display: inline-block;
+			}
+			
+			.totop3 {
+				-webkit-animation-duration: 0.6s;
+				-webkit-animation-play-state: paused;
+				-webkit-animation-fill-mode: both;
+				-webkit-animation-name: bounceToTop;
+				-webkit-animation-play-state: running;
+				-webkit-animation-delay: 0.8s;
+				display: inline-block;
+			}
+			
+			.totop4 {
+				-webkit-animation-duration: 0.6s;
+				-webkit-animation-play-state: paused;
+				-webkit-animation-fill-mode: both;
+				-webkit-animation-name: bounceToTop;
+				-webkit-animation-play-state: running;
+				-webkit-animation-delay: 1s;
+				display: inline-block;
+			}
+			
+			@-webkit-keyframes bounceToTop {
+				0%,
+				60%,
+				75%,
+				90%,
+				100% {
+					-webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+				}
+				0% {
+					opacity: 0;
+					-webkit-transform: translate3d(0, 500px, 0);
+				}
+				60% {
+					opacity: 1;
+					-webkit-transform: translate3d(0, -25px, 0);
+				}
+				75% {
+					-webkit-transform: translate3d(0, 5px, 0);
+				}
+				90% {
+					-webkit-transform: translate3d(0, -3px, 0);
+				}
+				100% {
+					-webkit-transform: none;
+				}
+			}
+			
 			.hide {
 				position: absolute;
 				top: -2000px;
@@ -166,25 +233,25 @@
 		<!-- 发现页 -->
 		<div class="ws-poppicker">
 			<div class="ws-add-body">
-				<a class="ws-add-body-cell" data-href="word" style="margin-left: 1vw;">
+				<a class="ws-add-body-cell totop1" data-href="word" style="margin-left: 1vw;">
 					<p class="ws-icon-body">
 						<span class="mui-icon-extra mui-icon-extra-word"></span>
 					</p>
 					<span class="ws-add-body-cell-text">文字</span>
 				</a>
-				<a class="ws-add-body-cell" data-href="photo">
+				<a class="ws-add-body-cell totop2" data-href="photo">
 					<p class="ws-icon-body">
 						<span class="mui-icon-extra mui-icon-extra-photo"></span>
 					</p>
 					<span class="ws-add-body-cell-text">图片</span>
 				</a>
-				<a class="ws-add-body-cell" data-href="video">
+				<a class="ws-add-body-cell totop3" data-href="video">
 					<p class="ws-icon-body">
 						<span class="mui-icon-extra mui-icon-extra-video"></span>
 					</p>
 					<span class="ws-add-body-cell-text">视频</span>
 				</a>
-				<a class="ws-add-body-cell" data-href="audio">
+				<a class="ws-add-body-cell totop4" data-href="audio">
 					<p class="ws-icon-body">
 						<span class="mui-icon-extra mui-icon-extra-audio"></span>
 					</p>
@@ -208,6 +275,40 @@
 			var closeIcon = document.getElementsByClassName("mui-icon-extra-close")[0];
 			var one = document.getElementsByClassName("ws-poppicker")[0];
 			var two = document.getElementsByClassName("ws-poppicker")[1];
+			var animateCellOne = {
+				one: document.getElementsByClassName("ws-add-body-cell")[0],
+				two: document.getElementsByClassName("ws-add-body-cell")[1],
+				three: document.getElementsByClassName("ws-add-body-cell")[2],
+				four: document.getElementsByClassName("ws-add-body-cell")[3],
+			}
+			var animateCellTwo = {
+				one: document.getElementsByClassName("ws-add-body-cell")[4],
+				two: document.getElementsByClassName("ws-add-body-cell")[5],
+				three: document.getElementsByClassName("ws-add-body-cell")[6],
+				four: document.getElementsByClassName("ws-add-body-cell")[7],
+			}
+
+			function addClass() {
+				animateCellOne.one.classList.add('totop1');
+				animateCellOne.two.classList.add('totop2');
+				animateCellOne.three.classList.add('totop3');
+				animateCellOne.four.classList.add('totop4');
+				animateCellTwo.one.classList.add('totop1');
+				animateCellTwo.two.classList.add('totop2');
+				animateCellTwo.three.classList.add('totop3');
+				animateCellTwo.four.classList.add('totop4');
+			}
+
+			function removeClass() {
+				animateCellOne.one.classList.remove('totop1');
+				animateCellOne.two.classList.remove('totop2');
+				animateCellOne.three.classList.remove('totop3');
+				animateCellOne.four.classList.remove('totop4');
+				animateCellTwo.one.classList.remove('totop1');
+				animateCellTwo.two.classList.remove('totop2');
+				animateCellTwo.three.classList.remove('totop3');
+				animateCellTwo.four.classList.remove('totop4');
+			}
 
 			//监听自定义事件 初始化事件，用于决定显示哪个页面
 			document.addEventListener('init', function(e) {
@@ -219,6 +320,11 @@
 				} else {
 					one.classList.add('hide');
 				}
+
+				addClass()
+				setTimeout(function() {
+					removeClass()
+				}, 3000)
 			})
 
 			//监听主要的8个点击事件
@@ -264,7 +370,7 @@
 			//监听close的关闭事件
 			var closebtn = document.getElementsByClassName("close")[0];
 			closebtn.addEventListener('tap', function(e) {
-				plus.nativeUI.toast('你点击了关闭按钮');
+				//plus.nativeUI.toast('你点击了关闭按钮');
 				//添加动画
 				closeIcon.classList.add('closeAnimate');
 				var btn = this;
@@ -289,8 +395,8 @@
 						bottom: '0px'
 					}
 				})
-				
-				bangyou_html.show('slide-in-right',200);
+
+				bangyou_html.show('slide-in-right', 200);
 			}
 
 		})

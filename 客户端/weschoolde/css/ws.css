@@ -11,7 +11,7 @@
 	box-shadow: 0 0 1px rgba(0, 0, 0, .5);
 	height: 51px;
 	padding: 5px;
-	background-color: rgba(0, 200, 247, 255);
+	background-color: rgba(0, 217, 217, 255);
 	width: 100%;
 }
 
@@ -68,7 +68,7 @@
 	font-size: 18px;
 	color: #FFFFFF;
 	position: absolute;
-	top: 15px;
+	top: 17px;
 	left: 50vw;
 	margin-left: -36px;
 }
